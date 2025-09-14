@@ -1,6 +1,6 @@
 'use client';
 
-import { TableCell, TableHead } from '@/app/components/Table';
+import { TableCell, TableHead } from '@/app/components/common/Table';
 import axios from 'axios';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';

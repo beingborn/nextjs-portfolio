@@ -1,8 +1,8 @@
 'use client';
 
-import Button from '@/app/components/button';
-import Input from '@/app/components/input';
-import { TableCell, TableHead } from '@/app/components/table';
+import Button from '@/app/components/common/Button';
+import Input from '@/app/components/common/Input';
+import { TableCell, TableHead } from '@/app/components/common/Table';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';

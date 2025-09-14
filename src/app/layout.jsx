@@ -3,6 +3,7 @@
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import localFont from 'next/font/local';
 import { usePathname } from 'next/navigation';
+import BreadCrumbs from '../app/layout/breadcrumbs/Breadcrumb.tsx';
 import { AppSidebar } from '../components/ui/app-sidebar';
 import './globals.css';
 

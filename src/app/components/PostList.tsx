@@ -1,10 +1,9 @@
 'use client';
 
-import React from 'react';
-import Post from './Post';
+import React, { useState } from 'react';
+import Modal from './common/Modal';
 import NewPost from './NewPost';
-import { useState } from 'react';
-import Modal from './Modal';
+import Post from './Post';
 
 const PostList = () => {
     const [modalIsVisible, setModalIsVisible] = useState(true);
