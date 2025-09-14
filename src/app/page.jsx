@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import { PageTitle, Table } from './components/common';
 
@@ -13,6 +13,11 @@ const data = [
     { name: 'Alice', age: 25, email: 'Canada@naver.com' },
     { name: 'Bob', age: 35, email: 'UK@naver.com' },
 ];
+
+export const metadata = {
+    title: '홈 | mhlee portfolio',
+    description: '포트폴리오 홈입니다.',
+};
 
 export default function Home() {
     return (
