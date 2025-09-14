@@ -37,36 +37,32 @@ export default function RootLayout({ children }) {
                     <SidebarProvider>
                         <AppSidebar />
                         <main className="grow basis-0 flex flex-col" id="container">
-                            <header className="h-[60px] fixed top-0 bg-blue-950 text-white flex flex-col justify-center px-4 w-full">
-                                <div>헤더</div>
+                            <header
+                                className="h-[60px] fixed top-0 bg-blue-950 text-white flex justify-between items-center px-4"
+                                style={{
+                                    width: 'calc(100% - 255px)',
+                                }}
+                            >
+                                <div className="flex items-center gap-1">
+                                    <SidebarTrigger />
+                                    <span>사이드바 접기</span>
+                                </div>
+                                <div>
+                                    <a href="#">로그인</a>
+                                    <a href="#">회원가입</a>
+                                </div>
                             </header>
                             <div className="mt-[60px] p-8" id="contents-wrap">
                                 {!isHome && !isLogin && <BreadCrumbs />}
-                                <h2 className="text-2xl font-bold mb-4">페이지 타이틀</h2>
                                 {children}
                             </div>
                             <footer className="bg-blue-950 text-white flex flex-col justify-center px-4 h-[40px] w-full mt-auto">
                                 <div>Copyright 2025@ deserved</div>
                             </footer>
                         </main>
-                        <SidebarTrigger />
                     </SidebarProvider>
-                    {/* <aside className="w-[280px] h-full bg-pri">
-                        <div className="h-[60px] bg-white"></div>
-                    </aside> */}
                 </div>
             </body>
         </html>
     );
-}
-
-{
-    /* <Footer /> */
-}
-
-{
-    /* <PageContainer title="예시">
-                        {!isHome && !isLogin && <BreadCrumbs />}
-                        {children}
-                    </PageContainer> */
 }

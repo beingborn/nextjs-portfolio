@@ -1,7 +1,7 @@
 'use client';
 
-import Button from './components/Button';
 import Table from './components/Table';
+import { PageTitle } from './components/common';
 
 const columns = [
     { id: 'name', label: 'Name' },
@@ -16,14 +16,10 @@ const data = [
 ];
 
 export default function Home() {
-    const handleConsole = () => {
-        console.log('Hi');
-    };
-
     return (
-        <div className="max-w-[1200] mx-auto">
+        <div>
+            <PageTitle title="홈" />
             <Table columns={columns} data={data} label="First Table" />
-            <Button onClick={handleConsole}>안녕</Button>
         </div>
     );
 }
