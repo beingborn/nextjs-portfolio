@@ -1,5 +1,3 @@
-// 'use client';
-
 import { PageTitle, Table } from './components/common';
 
 const columns = [
@@ -15,8 +13,7 @@ const data = [
 ];
 
 export const metadata = {
-    title: '홈 | mhlee portfolio',
-    description: '포트폴리오 홈입니다.',
+    title: '홈',
 };
 
 export default function Home() {
