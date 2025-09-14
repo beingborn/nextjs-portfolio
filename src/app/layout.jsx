@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
                         <AppSidebar />
                         <main className="grow basis-0 flex flex-col" id="container">
                             <header
-                                className="h-[60px] fixed top-0 bg-blue-950 text-white flex justify-between items-center px-4"
+                                className="h-[60px] fixed top-0 text-point flex justify-between items-center px-4 bg-zinc-200"
                                 style={{
                                     width: 'calc(100% - 255px)',
                                 }}
@@ -48,7 +48,7 @@ export default function RootLayout({ children }) {
                                     <SidebarTrigger />
                                     <span>사이드바 접기</span>
                                 </div>
-                                <div>
+                                <div className="flex gap-2 items-center">
                                     <a href="#">로그인</a>
                                     <a href="#">회원가입</a>
                                 </div>

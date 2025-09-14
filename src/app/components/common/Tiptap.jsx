@@ -53,7 +53,7 @@ export default function Tiptap() {
 
             <EditorContext.Provider value={{ editor }}>
                 <div
-                    className="flex items-center border border-b border-gray-400"
+                    className="flex items-center border border-b border-border-pri"
                     id="toolbar-header"
                 >
                     <button onClick={() => editor.chain().focus().toggleBold().run()}>

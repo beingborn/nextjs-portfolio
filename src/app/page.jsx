@@ -1,7 +1,6 @@
 'use client';
 
-import Table from './components/Table';
-import { PageTitle } from './components/common';
+import { PageTitle, Table } from './components/common';
 
 const columns = [
     { id: 'name', label: 'Name' },
