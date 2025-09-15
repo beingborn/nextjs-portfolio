@@ -14,6 +14,12 @@ export const metadata = {
         template: '%s | Mhlee',
         default: 'Mhlee Portfolio',
     },
+    generator: 'Next.js',
+    applicationName: 'Mhlee Portfolio',
+    referrer: 'origin-when-cross-origin',
+    keywords: ['Next.js', 'React', 'JavaScript', 'frontend portfolio'],
+    authors: [{ name: '이민혁', url: 'https://nextjs.org' }],
+    publisher: '이민혁',
 };
 
 export default function RootLayout({ children }) {

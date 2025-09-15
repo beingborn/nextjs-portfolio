@@ -16,13 +16,8 @@ export default function BaseLayout({ children }) {
         <div id="wrap" className="flex h-full">
             <SidebarProvider>
                 <AppSidebar />
-                <main className="grow basis-0 flex flex-col" id="container">
-                    <header
-                        className="h-[60px] fixed top-0 text-point flex justify-between items-center px-4 bg-zinc-200"
-                        style={{
-                            width: 'calc(100% - 255px)',
-                        }}
-                    >
+                <main className="grow relative basis-0 flex flex-col" id="container">
+                    <header className="min-h-[60px] sticky top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
                         <div className="flex items-center gap-1">
                             <SidebarTrigger />
                             <span>사이드바 접기</span>
@@ -32,7 +27,7 @@ export default function BaseLayout({ children }) {
                             <a href="#">회원가입</a>
                         </div>
                     </header>
-                    <div className="mt-[60px] p-8" id="contents-wrap">
+                    <div className="p-8" id="contents-wrap">
                         {!isHome && !isLogin && <BreadCrumbs />}
                         {children}
                     </div>

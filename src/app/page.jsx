@@ -12,10 +12,6 @@ const data = [
     { name: 'Bob', age: 35, email: 'UK@naver.com' },
 ];
 
-export const metadata = {
-    title: '홈',
-};
-
 export default function Home() {
     return (
         <div>

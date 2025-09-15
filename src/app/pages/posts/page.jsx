@@ -1,6 +1,6 @@
 'use client';
 
-import Table from '@/app/components/common/Table';
+import { SelectBox, Table } from '@/app/components/common';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Pagination from 'react-js-pagination';
@@ -18,22 +18,20 @@ const columns = [
     { id: 'body', label: '내용' },
 ];
 
+const limit = 20;
+
 export default function PostsList() {
-    type Post = {
-        userId: number;
-        id: number;
-        title: string;
-        body: string;
-    };
-
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState<Post[]>([]);
+    const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
-    const [itemCount, setItemCount] = useState(10);
+    const [itemCount, setItemCount] = useState();
+    const isAll = itemCount == '';
     const offset = (page - 1) * itemCount;
-    const sliceData = data.slice(offset, offset + itemCount);
+    const sliceData = isAll
+        ? data.slice(offset, offset + limit)
+        : data.slice(offset, offset + itemCount);
 
-    const handlePageChange = (page: any) => {
+    const handlePageChange = (page) => {
         setPage(page);
     };
 
@@ -58,18 +56,25 @@ export default function PostsList() {
 
     return (
         <div>
-            <select value={itemCount} onChange={(e) => setItemCount(Number(e.target.value))}>
-                <option value="5">5건씩 보기</option>
-                <option value="10">10건씩 보기</option>
-                <option value="15">15건씩 보기</option>
-                <option value="20">20건씩 보기</option>
-            </select>
-
+            <div className="flex justify-between mb-4">
+                <SelectBox
+                    options={[
+                        { value: '5건씩 보기', key: '5' },
+                        { value: '10건씩 보기', key: '10' },
+                        { value: '15건씩 보기', key: '15' },
+                        { value: '20건씩 보기', key: '20' },
+                    ]}
+                    placeholder="게시물 노출 수 선택"
+                    selectedValue={itemCount}
+                    error={null}
+                    disabled={false}
+                    handleChange={setItemCount}
+                />
+            </div>
             <Table label="test" columns={columns} data={sliceData} />
-
             <Pagination
                 activePage={page}
-                itemsCountPerPage={itemCount}
+                itemsCountPerPage={itemCount == '' ? limit : itemCount}
                 totalItemsCount={data.length - 1}
                 pageRangeDisplayed={5}
                 onChange={handlePageChange}

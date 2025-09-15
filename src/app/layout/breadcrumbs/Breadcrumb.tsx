@@ -21,5 +21,5 @@ export default function BreadCrumbs() {
         );
     });
 
-    return <div className="flex gap-2 my-4">{BreadCrumbLinks}</div>;
+    return <div className="flex gap-2 mb-4">{BreadCrumbLinks}</div>;
 }
