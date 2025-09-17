@@ -14,28 +14,32 @@ export default function BaseLayout({ children }) {
 
     return (
         <div id="wrap" className="flex h-full">
-            <SidebarProvider>
-                <AppSidebar />
-                <main className="grow relative basis-0 flex flex-col" id="container">
-                    <header className="min-h-[60px] sticky top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
-                        <div className="flex items-center gap-1">
-                            <SidebarTrigger />
-                            <span>사이드바 접기</span>
+            {!isLogin ? (
+                <SidebarProvider>
+                    <AppSidebar />
+                    <main className="grow relative basis-0 flex flex-col" id="container">
+                        <header className="min-h-[60px] sticky top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
+                            <div className="flex items-center gap-1">
+                                <SidebarTrigger />
+                                <span>사이드바 접기</span>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <a href="/pages/login">로그인</a>
+                                <a href="#">회원가입</a>
+                            </div>
+                        </header>
+                        <div className="p-8" id="contents-wrap">
+                            {!isHome && <BreadCrumbs />}
+                            {children}
                         </div>
-                        <div className="flex gap-2 items-center">
-                            <a href="#">로그인</a>
-                            <a href="#">회원가입</a>
-                        </div>
-                    </header>
-                    <div className="p-8" id="contents-wrap">
-                        {!isHome && !isLogin && <BreadCrumbs />}
-                        {children}
-                    </div>
-                    <footer className="bg-blue-950 text-white flex flex-col justify-center px-4 h-[40px] w-full mt-auto">
-                        <div>Copyright 2025@ deserved</div>
-                    </footer>
-                </main>
-            </SidebarProvider>
+                        <footer className="bg-blue-950 text-white flex flex-col justify-center px-4 h-[40px] w-full mt-auto">
+                            <div>Copyright 2025@ deserved</div>
+                        </footer>
+                    </main>
+                </SidebarProvider>
+            ) : (
+                children
+            )}
         </div>
     );
 }
