@@ -51,7 +51,9 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Mhlee Portfolio</SidebarGroupLabel>
+                    <SidebarGroupLabel>
+                        <strong>Next.js + Django</strong> Mhlee Portfolio
+                    </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (
