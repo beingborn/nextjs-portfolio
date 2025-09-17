@@ -30,12 +30,17 @@ const items = [
         icon: Calendar,
     },
     {
-        title: 'Search',
+        title: '포트폴리오 제작기',
         url: '#',
         icon: Search,
     },
     {
-        title: 'Settings',
+        title: '방명록',
+        url: '#',
+        icon: Settings,
+    },
+    {
+        title: '컴포넌트',
         url: '#',
         icon: Settings,
     },
