@@ -52,7 +52,9 @@ export function AppSidebar() {
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel>
-                        <strong>Next.js + Django</strong> Mhlee Portfolio
+                        <div className="flex flex-col pb-2 border-b border-b-gray-500s">
+                            <strong>Next.js + Django</strong> Mhlee Portfolio
+                        </div>
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>

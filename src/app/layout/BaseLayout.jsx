@@ -18,7 +18,6 @@ export default function BaseLayout({ children }) {
             {!isLogin ? (
                 <SidebarProvider>
                     <AppSidebar />
-
                     <main className="grow relative basis-0 flex flex-col" id="container">
                         <header className="min-h-[60px] sticky top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
                             <div className="flex items-center gap-1">
@@ -36,36 +35,34 @@ export default function BaseLayout({ children }) {
                         </div>
                         <footer className="bg-bg-lighter flex flex-col items-end gap-4 p-4 w-full mt-auto">
                             <ul className="flex gap-4 items-center">
-                                {Object.keys(portfolioConfig.social).map((key) =>
-                                    key === 'email' ? (
-                                        <li key="email" className="flex items-center gap-2">
+                                {Object.entries(portfolioConfig.social).map(([key, value]) => {
+                                    const isEmail = key === 'email';
+                                    const iconSrc = `/icon/ico_${key}.png`;
+
+                                    return (
+                                        <li key={key} className="flex items-center gap-2">
                                             <img
                                                 width="32"
                                                 height="32"
-                                                src={`/icon/ico_email.png`}
-                                                alt={`이메일 주소`}
+                                                src={isEmail ? '/icon/ico_email.png' : iconSrc}
+                                                alt={isEmail ? '이메일 주소' : `${key} 링크 연결`}
                                             />
-                                            {key} : {portfolioConfig.social['email']}
+                                            {isEmail ? (
+                                                <>
+                                                    {key} : {value}
+                                                </>
+                                            ) : (
+                                                <a
+                                                    href={value}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    {key}
+                                                </a>
+                                            )}
                                         </li>
-                                    ) : (
-                                        <li>
-                                            <a
-                                                className="flex items-center gap-2"
-                                                href={portfolioConfig.social[key]}
-                                                key={key}
-                                                target="_blank"
-                                            >
-                                                <img
-                                                    width="32"
-                                                    height="32"
-                                                    src={`/icon/ico_${key}.png`}
-                                                    alt={`${key} 링크 연결`}
-                                                />
-                                                {key}
-                                            </a>
-                                        </li>
-                                    ),
-                                )}
+                                    );
+                                })}
                             </ul>
                             <p className="text-text-pri">{portfolioConfig.copyright}</p>
                         </footer>
