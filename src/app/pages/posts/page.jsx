@@ -12,10 +12,10 @@ import Pagination from 'react-js-pagination';
  */
 
 const columns = [
-    { id: 'userId', label: '유저명' },
-    { id: 'id', label: '아이디' },
-    { id: 'title', label: '제목', isLink: true, href: 'posts' },
-    { id: 'body', label: '내용' },
+    { id: 'userId', label: '유저명', width: 100 },
+    { id: 'id', label: '아이디', width: 100 },
+    { id: 'title', label: '제목', isLink: true, href: 'posts', width: 'auto' },
+    { id: 'body', label: '내용', width: 300 },
 ];
 
 const limit = 20;
@@ -24,7 +24,7 @@ export default function PostsList() {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
-    const [itemCount, setItemCount] = useState();
+    const [itemCount, setItemCount] = useState('');
     const isAll = itemCount == '';
     const offset = (page - 1) * itemCount;
     const sliceData = isAll

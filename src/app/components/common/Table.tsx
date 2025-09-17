@@ -8,6 +8,7 @@ type Column = {
     label: string;
     isLink?: boolean;
     href?: string;
+    width?: number | string;
 };
 
 type HeaderProps = {
@@ -46,6 +47,16 @@ const Table = ({ columns, label, data }: TableProps) => {
     return (
         <table className="w-full table-fixed">
             <caption className="sr-only">{label}</caption>
+            <colgroup>
+                {columns.map((column) => (
+                    <col
+                        key={column.id}
+                        style={{
+                            width: column.width,
+                        }}
+                    />
+                ))}
+            </colgroup>
             <thead>
                 <tr>
                     {columns.map((column) => (

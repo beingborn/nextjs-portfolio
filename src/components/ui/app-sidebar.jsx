@@ -20,13 +20,13 @@ const items = [
         icon: Home,
     },
     {
-        title: 'Inbox',
-        url: '#',
+        title: '프로젝트',
+        url: '/pages/project',
         icon: Inbox,
     },
     {
-        title: 'Calendar',
-        url: '#',
+        title: '게시판',
+        url: '/pages/posts',
         icon: Calendar,
     },
     {
