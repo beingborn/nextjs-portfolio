@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
             className={`${pretendard.variable} h-full scroll-smooth text-text-pri font-medium min-h-full`}
         >
             <body className={`${pretendard.className} antialiased h-full`}>
+                <div id="portal"></div>
                 <BaseLayout>{children}</BaseLayout>
             </body>
         </html>

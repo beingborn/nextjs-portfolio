@@ -1,4 +1,5 @@
 export { default as Button } from './Button.jsx';
+export { default as CommonModal } from './CommonModal.jsx';
 export { default as CustomCheckbox } from './CustomCheckbox';
 export { default as Input } from './Input';
 export { default as Loading } from './Loading';

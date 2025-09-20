@@ -1,5 +1,8 @@
+'use client';
+
 import { cn } from '@/lib/utils';
-import { PageTitle } from '../../components/common';
+import { useState } from 'react';
+import { CommonModal, PageTitle } from '../../components/common';
 
 const PROJECT = [
     {
@@ -85,6 +88,12 @@ const PROJECT = [
 ];
 
 export default function ProjectPage() {
+    const [isModalOpen, setIsModalOpen] = useState(true);
+
+    const hideModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div>
             <PageTitle title="프로젝트" />
@@ -121,6 +130,39 @@ export default function ProjectPage() {
                     </button>
                 ))}
             </div>
+            <CommonModal title="프로젝트명" isOpen={isModalOpen} onClose={hideModal}>
+                <div data="프로젝트 ID">
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                    <p>프로젝트 정보</p>
+                </div>
+            </CommonModal>
         </div>
     );
 }
+
+// function ProjectDetail({ project_id }) {
+//     return (
+//         <div data="프로젝트 ID">
+//             <p>{data[project_id].title}</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//             <p>프로젝트 정보</p>
+//         </div>
+//     );
+// }
