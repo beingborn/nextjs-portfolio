@@ -28,8 +28,10 @@ export default function CommonModal({ title, onClose, isOpen, children }) {
                     onClick={onClose}
                 >
                     <div
-                        className="w-full max-w-3xl max-h-[calc(100vh-40px)] overflow-y-auto"
+                        className="relative z-1001 w-full max-w-3xl max-h-[calc(100vh-40px)] overflow-y-auto"
                         id="modal"
+                        // 클릭 이벤트 전파 방지
+                        onClick={(e) => e.stopPropagation()}
                     >
                         {/* Modal Content */}
                         <div className="bg-white p-8 min-h-[400px] rounded-lg shadow-sm ">
