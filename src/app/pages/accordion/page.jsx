@@ -10,7 +10,15 @@ export default function AccordionTestPage() {
         <AccordionWrapper type="multi" defaultValue="acco-1">
             <AccordionItem value="acco-1">
                 <AccordionTrigger>아코디언1</AccordionTrigger>
-                <AccordionContent>아코디언1 내용</AccordionContent>
+                <AccordionContent>
+                    <p>아코디언1 내용은 정말 다양합니다</p>
+                    <p>아코디언1 내용은 정말 다양합니다</p>
+                    <p>아코디언1 내용은 정말 다양합니다</p>
+                    <p>아코디언1 내용은 정말 다양합니다</p>
+                    <p>아코디언1 내용은 정말 다양합니다</p>
+                    <p>아코디언1 내용은 정말 다양합니다</p>
+                    <p>아코디언1 내용은 정말 다양합니다</p>
+                </AccordionContent>
             </AccordionItem>
             <AccordionItem value="acco-2">
                 <AccordionTrigger>아코디언2</AccordionTrigger>
