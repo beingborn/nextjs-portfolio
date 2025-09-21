@@ -1,3 +1,9 @@
+export {
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+    AccordionWrapper,
+} from './Accordion.jsx';
 export { default as Button } from './Button.jsx';
 export { default as CommonModal } from './CommonModal.jsx';
 export { default as CustomCheckbox } from './CustomCheckbox';
