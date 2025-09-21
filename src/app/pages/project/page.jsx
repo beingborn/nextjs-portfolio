@@ -2,7 +2,8 @@
 
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
-import { CommonModal, PageTitle } from '../../components/common';
+import { PageTitle } from '../../components/common';
+import ProjectDetailModal from './_components/ProjectDetailModal';
 
 const PROJECT = [
     {
@@ -214,9 +215,7 @@ export default function ProjectPage() {
                         className="flex flex-col items-start text-left border border-border-pri p-4 rounded-xl relative"
                         key={idx}
                     >
-                        <h3 className="text-xl font-bold" key={idx}>
-                            {project.title}
-                        </h3>
+                        <h3 className="text-xl font-bold">{project.title}</h3>
                         <p className="text-text-sec mt-4 mb-4">{project.description}</p>
                         <ul className="flex items-center gap-2 mt-auto">
                             {project.skills.split(',').map((skill) => (
@@ -242,57 +241,11 @@ export default function ProjectPage() {
                 ))}
             </div>
             {selectedProject && (
-                <CommonModal title={selectedProject.title} isOpen={isModalOpen} onClose={hideModal}>
-                    <div className="flex flex-col gap-8">
-                        <div>
-                            <h3 className="font-bold mb-4">프로젝트 설명</h3>
-                            <p className="text-text-sec">{selectedProject.description}</p>
-                        </div>
-                        <div>
-                            <h3 className="font-bold mb-4">기술스택</h3>
-                            <div className="flex gap-2 flex-wrap">
-                                {selectedProject.skills.split(',').map((skill) => (
-                                    <div key={skill}>
-                                        <img
-                                            src={`/icon/ico_${skill}.png`}
-                                            width="24"
-                                            height="24"
-                                            alt={skill}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="font-bold mb-4">프로젝트 스펙</h3>
-                            <div className="flex gap-8">
-                                <div className="flex flex-col gap-1">
-                                    <strong className="block">참여인원</strong>
-                                    <p className="text-text-sec">
-                                        {selectedProject.project_members}
-                                    </p>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <strong className="block">기간</strong>
-                                    <p className="text-text-sec">
-                                        {selectedProject.project_duration}
-                                    </p>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <strong className="block">링크</strong>
-                                    <p className="w-full">
-                                        <a
-                                            className="underline text-text-sec"
-                                            href={selectedProject.github_link}
-                                        >
-                                            프로젝트링크
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </CommonModal>
+                <ProjectDetailModal
+                    selectedProject={selectedProject}
+                    isOpen={isModalOpen}
+                    onClose={hideModal}
+                />
             )}
         </div>
     );
