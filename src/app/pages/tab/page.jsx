@@ -35,10 +35,12 @@ export default function TabTestPage() {
                     </TabButton>
                 </TabList>
                 <TabContent>
-                    <TabPanel value="tab1">탭1 콘텐츠</TabPanel>
-                    <TabPanel value="tab2">탭2 콘텐츠</TabPanel>
-                    <TabPanel value="tab3">탭3 콘텐츠</TabPanel>
-                    <TabPanel value="tab4">탭4 콘텐츠</TabPanel>
+                    <div className="p-8 border border-border-pri mt-8">
+                        <TabPanel value="tab1">탭1 콘텐츠</TabPanel>
+                        <TabPanel value="tab2">탭2 콘텐츠</TabPanel>
+                        <TabPanel value="tab3">탭3 콘텐츠</TabPanel>
+                        <TabPanel value="tab4">탭4 콘텐츠</TabPanel>
+                    </div>
                 </TabContent>
             </Tab>
         </>
