@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useRef, useState } from 'react';
 
 const AccordionContext = createContext();
 
@@ -111,41 +111,24 @@ function AccordionTrigger({ children }) {
 function AccordionContent({ children }) {
     const { selectedValue, variant } = useAccordionContext();
     const { value } = useAccordionItemContext();
-    const contentRef = useRef(null);
+    const ref = useRef(null);
     const isSelected = selectedValue.includes(value);
-    const [contentHeight, setContentHeight] = useState('0px');
 
     const wrapperVariantStyles = {
-        primary: 'transition-all duration-300 px-4 py-8 border border-border-pri rounded-md',
+        primary: 'px-4 py-8 border border-border-pri rounded-md',
     };
-
-    useEffect(() => {
-        if (isSelected && contentRef.current) {
-            contentRef.current.parentElement.classList.remove('hidden');
-
-            setContentHeight(`${contentRef.current.scrollHeight}px`);
-        } else {
-            setContentHeight(`0px`);
-        }
-
-        if (!isSelected && contentRef.current) {
-            setTimeout(() => {
-                contentRef.current.parentElement.classList.add('hidden');
-            }, 150);
-        }
-    }, [isSelected]);
 
     return (
         <div
-            id={`accordion-${value}-panel`}
-            role="region"
-            aria-labelledby={value}
-            className="hidden"
+            className="transition-all 500ms overflow-y-hidden"
+            style={{ height: isSelected ? ref.current?.offsetHeight || 0 : 0 }}
         >
             <div
-                ref={contentRef}
+                id={`accordion-${value}-panel`}
+                role="region"
+                aria-labelledby={value}
+                ref={ref}
                 className={cn(wrapperVariantStyles[variant])}
-                style={{ height: contentHeight }}
             >
                 {children}
             </div>
