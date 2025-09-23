@@ -5,6 +5,7 @@ export {
     AccordionWrapper,
 } from './Accordion.jsx';
 export { default as Button } from './Button.jsx';
+export { default as IconButton } from './IconButton.jsx';
 export { default as CommonModal } from './CommonModal.jsx';
 export { default as CustomCheckbox } from './CustomCheckbox';
 export { default as Input } from './Input';
