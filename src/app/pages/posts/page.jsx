@@ -26,10 +26,11 @@ export default function PostsList() {
     const [page, setPage] = useState(1);
     const [itemCount, setItemCount] = useState('');
     const isAll = itemCount == '';
-    const offset = (page - 1) * itemCount;
+    const offset = (page - 1) * Number(itemCount);
+
     const sliceData = isAll
         ? data.slice(offset, offset + limit)
-        : data.slice(offset, offset + itemCount);
+        : data.slice(offset, offset + Number(itemCount));
 
     const handlePageChange = (page) => {
         setPage(page);
@@ -74,7 +75,7 @@ export default function PostsList() {
             <Table label="test" columns={columns} data={sliceData} />
             <Pagination
                 activePage={page}
-                itemsCountPerPage={itemCount == '' ? limit : itemCount}
+                itemsCountPerPage={itemCount}
                 totalItemsCount={data.length - 1}
                 pageRangeDisplayed={5}
                 onChange={handlePageChange}

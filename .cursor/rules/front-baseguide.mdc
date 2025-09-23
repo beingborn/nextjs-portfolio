@@ -113,7 +113,6 @@ const fetchData = async () => {
 ### CSS 프레임워크
 
 - **주 스타일링**: Tailwind CSS v4 사용
-- **보조 스타일링**: SCSS 사용 (복잡한 스타일링)
 - **컴포넌트 라이브러리**: shadcn/ui 시스템
 
 ### Tailwind CSS 사용법
