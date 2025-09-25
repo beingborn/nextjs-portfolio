@@ -3,7 +3,7 @@ import {
     AccordionItem,
     AccordionTrigger,
     AccordionWrapper,
-} from '../../components/common';
+} from '@/app/components/common';
 
 export default function AccordionTestPage() {
     return (

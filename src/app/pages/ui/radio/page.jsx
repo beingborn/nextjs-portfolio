@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Radio, RadioGroup } from '../../components/common';
+import { Radio, RadioGroup } from '@/app/components/common';
 
 export default function RadioTestPage() {
     const [plan, setPlan] = useState('react');

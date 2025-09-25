@@ -2,7 +2,7 @@
 
 import { Box } from '@mui/material';
 import { useState } from 'react';
-import CustomCheckbox from '../../components/CustomCheckbox';
+import CustomCheckbox from '@/app/components/common/CustomCheckbox';
 
 export default function CheckboxTest() {
     const [isTermsCheckNo1, setIsTermsCheckNo1] = useState(false);

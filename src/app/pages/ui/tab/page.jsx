@@ -1,4 +1,4 @@
-import { Tab, TabButton, TabContent, TabList, TabPanel } from '../../components/common';
+import { Tab, TabButton, TabContent, TabList, TabPanel } from '@/app/components/common';
 
 export default function TabTestPage() {
     return (

@@ -12,6 +12,7 @@ export { default as Input } from './Input';
 export { default as Loading } from './Loading';
 export { default as Modal } from './Modal';
 export { default as PageTitle } from './PageTitle.jsx';
+export { default as PageSubTitle } from './PageSubTitle.jsx';
 export { Radio, RadioGroup } from './Radio.jsx';
 export { default as SelectBox } from './SelectBox';
 export { Tab, TabButton, TabContent, TabList, TabPanel } from './Tab.jsx';
