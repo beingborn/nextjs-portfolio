@@ -19,7 +19,7 @@ export default function BaseLayout({ children }) {
                 <SidebarProvider>
                     <AppSidebar />
                     <main className="grow relative basis-0 flex flex-col" id="container">
-                        <header className="min-h-[60px] sticky top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
+                        <header className="min-h-[60px] sticky z-50 top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
                             <div className="flex items-center gap-1">
                                 <SidebarTrigger />
                                 <span>사이드바 접기</span>

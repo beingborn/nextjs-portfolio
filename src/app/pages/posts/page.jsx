@@ -69,7 +69,7 @@ export default function PostsList() {
                     selectedValue={itemCount}
                     error={null}
                     disabled={false}
-                    handleChange={setItemCount}
+                    onChange={(e) => setItemCount(e.target.value)}
                 />
             </div>
             <Table label="test" columns={columns} data={sliceData} />

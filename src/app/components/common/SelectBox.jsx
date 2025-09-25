@@ -9,7 +9,7 @@ export default function SelectBox({
     children,
     error,
     disabled,
-    handleChange,
+    onChange,
 }) {
     const uniqueId = label ? useId() : null;
 
@@ -23,9 +23,9 @@ export default function SelectBox({
             <select
                 id={uniqueId}
                 value={selectedValue}
-                onChange={(e) => handleChange(e.target.value)}
+                onChange={onChange}
                 disabled={disabled}
-                className="appearance-none pl-4 pr-12 h-[40px] border border-border-pri focus:outline-none focus:border-pri"
+                className="w-full appearance-none pl-4 pr-12 h-[40px] border border-border-pri focus:outline-none focus:border-pri"
             >
                 {placeholder && <option value="">{placeholder}</option>}
                 {options

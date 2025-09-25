@@ -2,9 +2,6 @@
 
 import { useRef, useState } from 'react';
 
-// 추후 투두 :
-// Sidebar 메뉴 순서 변경
-
 export default function DragAndDrop() {
     const [list, setList] = useState([
         '마이페이지',
