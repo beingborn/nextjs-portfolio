@@ -42,7 +42,7 @@ export default function UIpage() {
                     을 방문하세요.
                 </p>
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 max-w-[1440px]">
                 <div className="flex items-center justify-between">
                     <div>
                         <strong>컴포넌트 총 {filteredList.length}개</strong>

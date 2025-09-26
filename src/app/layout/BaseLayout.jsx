@@ -1,10 +1,9 @@
 'use client';
 
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import { usePathname } from 'next/navigation';
-import { portfolioConfig } from '../../../portfolio.config.js';
 import { AppSidebar } from '../../components/ui/app-sidebar.jsx';
-import BreadCrumbs from './breadcrumbs/Breadcrumb.tsx';
+import { Header, Footer, Breadcrumbs } from './index.js';
 
 export default function BaseLayout({ children }) {
     const pathname = usePathname();
@@ -19,53 +18,12 @@ export default function BaseLayout({ children }) {
                 <SidebarProvider>
                     <AppSidebar />
                     <main className="grow relative basis-0 flex flex-col" id="container">
-                        <header className="min-h-[60px] sticky z-50 top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
-                            <div className="flex items-center gap-1">
-                                <SidebarTrigger />
-                                <span>사이드바 접기</span>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <a href="/pages/login">로그인</a>
-                                <a href="#">회원가입</a>
-                            </div>
-                        </header>
+                        <Header />
                         <div className="p-8" id="contents-wrap">
-                            {!isHome && <BreadCrumbs />}
+                            {!isHome && <Breadcrumbs />}
                             {children}
                         </div>
-                        <footer className="bg-bg-lighter flex flex-col items-end gap-4 p-4 w-full mt-auto">
-                            <ul className="flex gap-4 items-center">
-                                {Object.entries(portfolioConfig.social).map(([key, value]) => {
-                                    const isEmail = key === 'email';
-                                    const iconSrc = `/icon/ico_${key}.png`;
-
-                                    return (
-                                        <li key={key} className="flex items-center gap-2">
-                                            <img
-                                                width="32"
-                                                height="32"
-                                                src={isEmail ? '/icon/ico_email.png' : iconSrc}
-                                                alt={isEmail ? '이메일 주소' : `${key} 링크 연결`}
-                                            />
-                                            {isEmail ? (
-                                                <>
-                                                    {key} : {value}
-                                                </>
-                                            ) : (
-                                                <a
-                                                    href={value}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    {key}
-                                                </a>
-                                            )}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                            <p className="text-text-pri">{portfolioConfig.copyright}</p>
-                        </footer>
+                        <Footer />
                     </main>
                 </SidebarProvider>
             ) : (

@@ -1,9 +1,18 @@
 'use client';
 
+import { SidebarTrigger } from '@/components/ui/sidebar';
+
 const Header = () => {
     return (
-        <header className="bg-blue-400 text-white flex flex-col justify-center px-4 h-[40px] w-full">
-            <div>헤더</div>
+        <header className="min-h-[60px] sticky z-50 top-0 text-point flex justify-between items-center px-4 bg-zinc-200">
+            <div className="flex items-center gap-1">
+                <SidebarTrigger />
+                <span>사이드바 접기</span>
+            </div>
+            <div className="flex gap-2 items-center">
+                <a href="/pages/login">로그인</a>
+                <a href="#">회원가입</a>
+            </div>
         </header>
     );
 };
