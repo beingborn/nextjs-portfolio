@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, Home, Inbox, Search, Settings, Component } from 'lucide-react';
+import { Calendar, Home, Inbox, Search, Component, Book } from 'lucide-react';
 
 import {
     Sidebar,
@@ -38,6 +38,11 @@ const items = [
         title: '컴포넌트',
         url: '/pages/ui',
         icon: Component,
+    },
+    {
+        title: '방명록',
+        url: '/pages/guestbook',
+        icon: Book,
     },
 ];
 
