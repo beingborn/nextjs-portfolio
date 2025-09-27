@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Modal from './common/Modal';
+import Modal from './common/Modal.jsx';
 import NewPost from './NewPost';
 import Post from './Post';
 

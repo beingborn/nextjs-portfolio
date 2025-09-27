@@ -11,12 +11,7 @@ import React from 'react';
  *   - children 하위 노드 출력
  */
 
-interface ModalProps {
-    children?: React.ReactNode;
-    onClose: () => void;
-}
-
-const Modal = ({ children, onClose }: ModalProps) => {
+const Modal = ({ children, onClose }) => {
     return (
         <>
             <div className="fixed top-0 left-0 w-full h-screen bg-black/60 z-10" onClick={onClose}>

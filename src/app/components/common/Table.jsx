@@ -3,24 +3,7 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-type Column = {
-    id: string;
-    label: string;
-    isLink?: boolean;
-    href?: string;
-    width?: number | string;
-};
-
-type HeaderProps = {
-    column?: Column;
-    children?: React.ReactNode;
-};
-
-type CellProps = {
-    children: React.ReactNode;
-};
-
-const Header = ({ column, children }: HeaderProps) => {
+const Header = ({ column, children }) => {
     return (
         <th className="h-10 border border-gray-300 border-collapse text-left px-2 bg-sky-100">
             {column && column.label}
@@ -29,19 +12,11 @@ const Header = ({ column, children }: HeaderProps) => {
     );
 };
 
-const Cell = ({ children }: CellProps) => {
+const Cell = ({ children }) => {
     return <td className="h-10 border border-gray-300 px-2 bg-white">{children}</td>;
 };
 
-// Record <Key, Value>
-// 키가 Key타입이고 값이 Value 타입인 객체 타입을 생성함
-interface TableProps {
-    columns: Column[]; // Column 타입의 객체들을 가지는 배열롰써 선언
-    data: Record<string, any>[];
-    label: string;
-}
-
-const Table = ({ columns, label, data }: TableProps) => {
+const Table = ({ columns, label, data }) => {
     const router = useRouter();
 
     return (

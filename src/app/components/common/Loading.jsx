@@ -1,12 +1,6 @@
 import Image from 'next/image';
 
-interface LoadingProps {
-    size: string;
-    message: string;
-    isReady: boolean;
-}
-
-const Loading = ({ size, message, isReady }: LoadingProps) => {
+const Loading = ({ size, message, isReady }) => {
     const squareSize = size === 'sm' ? 50 : 100;
 
     if (isReady) {

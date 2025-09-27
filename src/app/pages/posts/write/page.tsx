@@ -2,7 +2,7 @@
 
 import Button from '@/app/components/common/Button';
 import Input from '@/app/components/common/Input';
-import { TableCell, TableHead } from '@/app/components/common/Table';
+import { TableCell, TableHead } from '@/app/components/common/Table.jsx';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
