@@ -98,6 +98,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/beingborn/jobOpeningVue/tree/main/test-project',
         skills: 'vue,supabase,sass',
         type: 'sideproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 2,
@@ -108,6 +109,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/admin-dashboard',
         skills: 'firebase,vue,supabase,sass,tailwind',
         type: 'sideproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 3,
@@ -118,6 +120,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/todo-mobile',
         skills: 'python,vue,supabase,sass,tailwind',
         type: 'sideproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 4,
@@ -128,6 +131,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/markdown-blog',
         skills: 'supabase,html,css,javascript',
         type: 'workproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 5,
@@ -138,6 +142,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/realtime-chat',
         skills: 'typescript,supabase,sass,tailwind',
         type: 'workproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 6,
@@ -148,6 +153,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/ecommerce-front',
         skills: 'vue,supabase,sass,tailwind,django',
         type: 'workproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 7,
@@ -158,6 +164,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/weather-app',
         skills: 'html,css,javascript,tailwind,supabase,django',
         type: 'workproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 8,
@@ -168,6 +175,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/kanban-board',
         skills: 'vue,supabase,sass,tailwind,django',
         type: 'workproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 9,
@@ -178,6 +186,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/movie-search',
         skills: 'vue,supabase,sass,tailwind,django',
         type: 'workproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
     {
         id: 10,
@@ -188,6 +197,7 @@ const PROJECT_DETAIL = [
         github_link: 'https://github.com/example/portfolio-site',
         skills: 'vue,supabase,sass,tailwind,django',
         type: 'sideproject',
+        thumbnail: 'https://placehold.co/600x400/png',
     },
 ];
 

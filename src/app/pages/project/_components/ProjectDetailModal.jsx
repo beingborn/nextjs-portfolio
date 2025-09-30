@@ -53,6 +53,9 @@ export default function ProjectDetailModal({ selectedProject, isOpen, onClose })
                         </div>
                     </div>
                 </div>
+                <div className="">
+                    <img src={selectedProject.thumbnail} alt="포트폴리오" />
+                </div>
             </div>
         </CommonModal>
     );
