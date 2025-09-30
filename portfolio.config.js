@@ -14,6 +14,7 @@ const portfolioConfig = {
         email: 'mindol0708@gmail.com',
     },
     copyright: `Copyright ${currentYear} mhlee All rights reserved`,
+    project_duration: '20250827~',
 };
 
 export { portfolioConfig };

@@ -1,13 +1,13 @@
 import {
-    ChevronsDownUp,
     CheckSquare,
-    GripVertical,
-    FileCode,
-    MousePointerClick,
-    SquareDashed,
+    ChevronsDownUp,
     CircleDot,
-    Search,
+    FileCode,
+    GripVertical,
+    MousePointerClick,
     PanelTop,
+    Search,
+    SquareDashed,
 } from 'lucide-react';
 
 export const COMPONENTS = [
@@ -71,6 +71,13 @@ export const COMPONENTS = [
         title: '탭',
         href: '/pages/ui/tab',
         description: '탭을 구현합니다.',
+        type: 'Organism',
+        icon: <PanelTop size={40} color="#ffffff" />,
+    },
+    {
+        title: '파일업로드',
+        href: '/pages/ui/fileupload',
+        description: '파일업로드를 구현합니다.',
         type: 'Organism',
         icon: <PanelTop size={40} color="#ffffff" />,
     },
