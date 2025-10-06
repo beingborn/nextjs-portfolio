@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Project, Post
+from .models import Project, Post, Guestbook
 
-admin.site.register([Project, Post])
+admin.site.register([Project, Post, Guestbook])

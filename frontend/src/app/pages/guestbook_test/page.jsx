@@ -10,7 +10,7 @@ export default function ProjectTest() {
     const fetchData = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://127.0.0.1:8000/api/project');
+            const response = await axios.get('http://127.0.0.1:8000/api/guestbook');
 
             setData(response.data);
             setLoading(false);
@@ -31,18 +31,18 @@ export default function ProjectTest() {
 
     return (
         <ul>
-            {data?.map((project) => (
-                <li key={project.id}>
-                    <a href={project.link}>
-                        <img src={project.thumbnail} alt={project.title} />
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
-                        <p>
-                            {project.start_date} ~ {project.end_date}
-                        </p>
-                        <p>{project.project_members}명</p>
-                        <span>{project.type}</span>
-                    </a>
+            {data?.map((guest) => (
+                <li key={guest.id}>
+                    <p>{guest.title}</p>
+                    <p>{guest.author}</p>
+                    <p>{guest.text}</p>
+                    <p
+                        style={{
+                            backgroundColor: guest.color,
+                        }}
+                    >
+                        {guest.color}
+                    </p>
                 </li>
             ))}
         </ul>

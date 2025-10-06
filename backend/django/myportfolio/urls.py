@@ -21,5 +21,6 @@ import portfolio.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello', views.hello),
-    path('project', views.project_list)
+    path('api/project', views.ProjectListView.as_view(), name="project-list"),
+    path('api/guestbook', views.GuestbookView.as_view(), name="guest-book"),
 ]

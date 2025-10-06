@@ -1,16 +1,24 @@
 import json
 
+from rest_framework import generics
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from .models import Project, Post
+from .models import Project, Post, Guestbook
+from .serializers import ProjectSerializer, PostSerializer, GuestbookSerializer
 
-@csrf_exempt
-def project_list(request):
-    data = list(Project.objects.all().values())
+class ProjectListView(generics.ListCreateAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
     
-    return JsonResponse(data, safe=False, status=200)
+class PostListView(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    
+class GuestbookView(generics.ListCreateAPIView):
+    queryset = Guestbook.objects.all()
+    serializer_class = GuestbookSerializer
 
 @csrf_exempt
 @require_POST
