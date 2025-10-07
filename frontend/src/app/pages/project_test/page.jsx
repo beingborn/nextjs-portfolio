@@ -1,32 +1,16 @@
 'use client';
 
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import useDataApi from '../../../hooks/useDataApi';
 
 export default function ProjectTest() {
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState([]);
-
-    const fetchData = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.get('http://127.0.0.1:8000/api/project');
-
-            setData(response.data);
-            setLoading(false);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    console.log(data);
+    const { data, loading, error } = useDataApi('/api/project');
 
     if (loading || !data) {
         return <div>로딩 중..</div>;
+    }
+
+    if (error) {
+        return <p>{error.message}</p>;
     }
 
     return (
