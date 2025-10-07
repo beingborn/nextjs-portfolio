@@ -8,24 +8,22 @@ export default function useDataApi(url) {
     const [loading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const fetchData = async () => {
+        try {
+            setIsLoading(true);
+            const response = await axios.get(`${API}${url}`);
+
+            setData(response.data);
+            setIsLoading(false);
+        } catch (e) {
+            console.log(e);
+            setError(e);
+        }
+    };
+
     useEffect(() => {
-        console.log(`${API}${url}`);
-
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
-                const response = await axios.get(`${API}${url}`);
-
-                setData(response.data);
-                setIsLoading(false);
-            } catch (e) {
-                console.log(e);
-                setError(e);
-            }
-        };
-
         fetchData();
     }, [url]);
 
-    return { data, loading, error };
+    return { data, loading, error, fetchData };
 }

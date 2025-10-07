@@ -1,18 +1,20 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import useDataApi from '../../../hooks/useDataApi';
 import { Button, PageTitle } from '../../components/common';
 
-const USERMAXLENGTH = 10;
-const COMMENTMAXLENGTH = 100;
+const TITLEMAXLENGTH = 20;
+const AUTHORMAXLENGTH = 10;
+const TEXTMAXLENGTH = 100;
 const POSTITCOLORS = ['#d1e8f2', '#fdcc84', '#feebda', '#fee6e6', '#e7f1f2'];
 
 const initialForm = {
-    id: '',
-    user: '',
-    comment: '',
+    title: '',
+    author: '',
+    text: '',
     color: POSTITCOLORS[0],
 };
 
@@ -42,25 +44,38 @@ function GuestBookForm({ onSubmit, onInput, form }) {
                         <input
                             className="w-full"
                             type="text"
-                            placeholder="유저명"
-                            value={form.user}
-                            onChange={(e) => onInput('user', e)}
-                            maxLength={USERMAXLENGTH}
+                            placeholder="제목"
+                            value={form.title}
+                            onChange={(e) => onInput('title', e)}
+                            maxLength={TITLEMAXLENGTH}
                         />
                         <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                            {form.user.length} / {USERMAXLENGTH}
+                            {form.title.length} / {TITLEMAXLENGTH}
+                        </span>
+                    </div>
+                    <div className="relative">
+                        <input
+                            className="w-full"
+                            type="text"
+                            placeholder="이름"
+                            value={form.author}
+                            onChange={(e) => onInput('author', e)}
+                            maxLength={AUTHORMAXLENGTH}
+                        />
+                        <span className="absolute top-1/2 right-2 -translate-y-1/2">
+                            {form.author.length} / {AUTHORMAXLENGTH}
                         </span>
                     </div>
                     <div className="relative">
                         <textarea
                             className="w-full h-[240px] resize-none"
                             placeholder="글 내용"
-                            value={form.comment}
-                            onChange={(e) => onInput('comment', e)}
-                            maxLength={COMMENTMAXLENGTH}
+                            value={form.text}
+                            onChange={(e) => onInput('text', e)}
+                            maxLength={TEXTMAXLENGTH}
                         />
                         <span className="absolute right-2 bottom-2">
-                            {form.comment.length} / {COMMENTMAXLENGTH}
+                            {form.text.length} / {TEXTMAXLENGTH}
                         </span>
                     </div>
                     <Button type="submit">업로드</Button>
@@ -89,7 +104,7 @@ function GuestBookList({ guestbook }) {
 }
 
 export default function GuestbookPage() {
-    const { data, loading, error } = useDataApi('/api/guestbook');
+    const { data, loading, error, fetchData } = useDataApi('/api/guestbook');
     const [guestbook, setGuestBook] = useState([]);
     const [form, setForm] = useState(initialForm);
 
@@ -106,19 +121,35 @@ export default function GuestbookPage() {
         }));
     }
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-
+    async function postData() {
         const newGuest = {
-            id: Math.random(),
-            user: form.user,
-            comment: form.comment,
+            title: form.title,
+            author: form.author,
+            text: form.text,
             color: form.color,
         };
 
-        setGuestBook((prevGuestBook) => [newGuest, ...prevGuestBook]);
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/guestbook', newGuest);
+            console.log(response);
+        } catch (error) {
+            //응답 실패
+            console.error(error);
+        }
+    }
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+        // Data Post
+        postData();
 
         alert('작성이 완료되었습니다!');
+
+        // Data 재연결
+        fetchData();
+
+        // Form 초기화
         setForm(initialForm);
     };
 
