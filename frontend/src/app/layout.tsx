@@ -1,11 +1,8 @@
-import BaseLayout from '';
-
+import BaseLayout from '@/app/_layout/BaseLayout';
 import localFont from 'next/font/local';
-import './';
-import './globals.css';
+import '../styles/globals.css';
 
 const pretendard = localFont({
-    // src: './assets/fonts/PretendardVariable.woff2',
     src: '../assets/fonts/PretendardVariable.woff2',
     display: 'swap',
     weight: '100 900',
@@ -25,7 +22,7 @@ export const metadata = {
     publisher: '이민혁',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html
             lang="ko"

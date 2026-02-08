@@ -1,9 +1,9 @@
 'use client';
 
+import { Breadcrumbs, Footer, Header, Sidebar } from '@/components/layout';
 import { usePathname } from 'next/navigation';
-import { Breadcrumbs, Footer, Header } from './index.js';
 
-export default function BaseLayout({ children }) {
+export default function BaseLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const path = pathname.split('/');
     const page = path.at(-1);
@@ -13,7 +13,7 @@ export default function BaseLayout({ children }) {
     return (
         <div id="wrap" className="flex h-full">
             {/* Sidebar */}
-            <aside></aside>
+            <Sidebar />
             {!isLogin ? (
                 <main className="grow relative basis-0 flex flex-col" id="container">
                     <Header />

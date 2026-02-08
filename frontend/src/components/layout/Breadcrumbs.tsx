@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function BreadCrumbs() {
+export default function Breadcrumbs() {
     const pathname = usePathname();
     const path = pathname.split('/');
     const segments = path.filter((element) => element !== 'pages');
