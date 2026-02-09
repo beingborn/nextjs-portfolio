@@ -20,6 +20,9 @@ export const metadata = {
     keywords: ['Next.js', 'React', 'JavaScript', 'frontend portfolio'],
     authors: [{ name: '이민혁', url: 'https://nextjs.org' }],
     publisher: '이민혁',
+    icons: {
+        icon: '/images/favicon.ico',
+    },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -13,7 +13,7 @@ const data = [
 export default function Home() {
     return (
         <div>
-            <div class="text-pri">테일윈드 테스트</div>
+            <div className="text-pri">테일윈드 테스트</div>
             {/* <PageTitle title="홈" />
             <Table columns={columns} data={data} label="First Table" /> */}
         </div>

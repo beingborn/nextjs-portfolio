@@ -1,91 +1,65 @@
 import MainLogo from '@/assets/logo.svg';
+import MainLogoSymbol from '@/assets/logo_symbol.svg';
+import SidebarMenuButton from '@/components/layout/Sidebar/SidebarMenuButton';
+import useSidebarStore from '@/store/sidebar';
 import {
     Component,
     House,
     Newspaper,
     NotebookPen,
-    PanelRight,
+    PanelLeftClose,
+    PanelLeftOpen,
     SquareChartGantt,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-/* 
-    Component 
-
-    SidebarTrigger 
-    - 전역 Sidebar 상태 expanded 상태 전환 
-
-    SidebarLink 
-    - url과 href의 값이 같을 경우 isActive 변수를 통해 bg-white를 활성화 시킨다
-    - expanded 상태일 경우 text 노출 아닐 경우 아이콘만 노출
-*/
+const navItems = [
+    { name: 'Home', icon: <House />, href: '/' },
+    { name: 'Project', icon: <SquareChartGantt />, href: '/project' },
+    { name: 'Guestbook', icon: <NotebookPen />, href: '/guestbook' },
+    { name: 'User Interface', icon: <Component />, href: '/ui' },
+    { name: 'Board', icon: <Newspaper />, href: '/board' },
+];
 
 export default function Sidebar() {
-    const isActive = true;
+    const { expanded, toggleSidebar } = useSidebarStore();
+    const pathname = usePathname();
 
     return (
-        <aside className="w-[20rem] bg-sidebar-primary">
+        <aside
+            className={`flex flex-col items-stretch bg-sidebar-primary ${expanded ? 'w-[20rem]' : 'w-18'}`}
+        >
             <div className="h-full flex flex-col">
                 <div className="p-5">
-                    <div className="flex pb-4 justify-between items-center">
+                    <div
+                        className={`flex pb-4 justify-between items-center ${!expanded && 'flex-col gap-8'}`}
+                    >
                         <h1>
                             <Link href="/">
-                                <Image src={MainLogo} alt="Mh Dev" />
+                                <Image src={expanded ? MainLogo : MainLogoSymbol} alt="Mh Dev" />
                             </Link>
                         </h1>
-                        <button type="button">
-                            <PanelRight size={20} />
-                            <span className="sr-only">사이드바 접기</span>
+                        <button type="button" onClick={toggleSidebar}>
+                            {expanded ? <PanelLeftClose size={20} /> : <PanelLeftOpen size={20} />}
+
+                            <span className="sr-only">
+                                {expanded ? '사이드바 접기' : '사이드바 열기'}
+                            </span>
                         </button>
                     </div>
                     <nav>
-                        <ul className="flex flex-col">
-                            <li>
-                                <Link
-                                    href="/"
-                                    className={`px-2 rounded-md h-10 flex items-center gap-2 ${isActive && 'bg-white'}`}
-                                >
-                                    <House />
-                                    <span>Home</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/project"
-                                    className="px-2 rounded-md h-10 flex items-center gap-2"
-                                >
-                                    <SquareChartGantt />
-                                    <span>Project</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/guestbook"
-                                    className="px-2 rounded-md h-10 flex items-center gap-2"
-                                >
-                                    <NotebookPen />
-                                    <span>Guestbook</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/ui"
-                                    className="px-2 rounded-md h-10 flex items-center gap-2"
-                                >
-                                    <Component />
-                                    <span>User Interface</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/board"
-                                    className="px-2 rounded-md h-10 flex items-center gap-2"
-                                >
-                                    <Newspaper />
-                                    <span>Board</span>
-                                </Link>
-                            </li>
+                        <ul className="flex flex-col gap-2">
+                            {navItems.map((item) => {
+                                const isActive = pathname === item.href;
+
+                                return (
+                                    <li key={item.name}>
+                                        <SidebarMenuButton {...item} isActive={isActive} />
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </nav>
                 </div>
