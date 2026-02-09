@@ -1,3 +1,8 @@
+/* 
+    TODO
+    필요 속성 정의 
+*/
+
 const Button = ({ children, disabled = false, fullWidth = false, ...rest }) => {
     return (
         <button
