@@ -3,7 +3,9 @@ import { ButtonHTMLAttributes } from 'react';
 
 /* 
     TODO
-    필요 속성 정의 
+    - 필요 속성 정의 
+    - cva 속성 정의 
+    - 미필요 props 삭제 처리 
 */
 
 const buttonVariants = cva('');
