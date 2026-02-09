@@ -1,6 +1,6 @@
 'use client';
 
-import { Breadcrumbs, Footer, Header, Sidebar } from '@/components/layout';
+import { Breadcrumbs, Header, Sidebar } from '@/components/layout';
 import { usePathname } from 'next/navigation';
 
 export default function BaseLayout({ children }: { children: React.ReactNode }) {
@@ -11,21 +11,27 @@ export default function BaseLayout({ children }: { children: React.ReactNode }) 
     const isLogin = pathname.includes('login');
 
     return (
-        <div id="wrap" className="flex h-full">
-            {/* Sidebar */}
-            <Sidebar />
-            {!isLogin ? (
-                <main className="grow relative basis-0 flex flex-col" id="container">
-                    <Header />
-                    <div className="p-8" id="contents-wrap">
-                        {!isHome && <Breadcrumbs />}
-                        {children}
-                    </div>
-                    <Footer />
-                </main>
-            ) : (
-                children
-            )}
-        </div>
+        <>
+            <a href="#container" className="skip-navigation">
+                본문바로가기
+            </a>
+
+            <div id="wrap" className="flex h-full">
+                <Sidebar />
+                {!isLogin ? (
+                    <main className="h-full grow relative basis-0 flex flex-col" id="container">
+                        <Header />
+                        <div className="pl-1 bg-bg-surface h-full grow" id="contents-wrap">
+                            <div className="p-8 w-full h-full rounded-tl-2xl shadow-lg bg-white">
+                                {!isHome && <Breadcrumbs />}
+                                {children}
+                            </div>
+                        </div>
+                    </main>
+                ) : (
+                    children
+                )}
+            </div>
+        </>
     );
 }

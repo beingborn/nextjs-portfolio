@@ -93,5 +93,36 @@ ul.pagination li.active {
     color: #fff;
 }
 
+@layer base {
+    *:focus {
+        outline: none;
+    }
+
+    *:focus-visible {
+        outline: 0.2rem solid var(--color-primary-500);
+        outline-offset: 0.1rem;
+    }
+}
+
 @layer components {
+    .skip-navigation {
+        position: absolute;
+        top: -9.9rem;
+        left: 0;
+        background-color: #333;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        z-index: 999;
+        padding: 1rem;
+    }
+
+    .skip-navigation:focus,
+    .skip-navigation:active,
+    .skip-navigation:focus-visible {
+        display: block;
+        top: 0;
+        outline-color: var(--color-primary-500);
+        outline-offset: -0.1rem;
+    }
 }
