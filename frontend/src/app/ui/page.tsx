@@ -1,3 +1,14 @@
+import Link from 'next/link';
+
 export default function UserInterface() {
-    return <h1>Ui</h1>;
+    return (
+        <ul className="flex flex-col gap-2">
+            <li>
+                <Link href="/ui/button">Button</Link>
+            </li>
+            <li>
+                <Link href="/ui/loading">Loading</Link>
+            </li>
+        </ul>
+    );
 }

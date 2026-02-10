@@ -45,6 +45,8 @@
     /* Border */
     --color-border-primary-500: #ddd;
     --color-border-primary-300: #ededed;
+
+    --z-index-loading: 100;
 }
 
 /* Reset */
