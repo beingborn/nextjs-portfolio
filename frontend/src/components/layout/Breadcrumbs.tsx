@@ -44,5 +44,5 @@ export default function Breadcrumbs() {
         );
     });
 
-    return <div className="flex gap-2 mb-4">{BreadCrumbLinks}</div>;
+    return <div className="flex gap-2 mb-8">{BreadCrumbLinks}</div>;
 }
