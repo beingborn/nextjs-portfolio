@@ -9,6 +9,9 @@ export default function UserInterface() {
             <li>
                 <Link href="/ui/loading">Loading</Link>
             </li>
+            <li>
+                <Link href="/ui/custominput">Input</Link>
+            </li>
         </ul>
     );
 }
