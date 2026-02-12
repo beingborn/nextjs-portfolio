@@ -52,7 +52,11 @@ export default function Sidebar() {
                     <nav>
                         <ul className="flex flex-col gap-2">
                             {navItems.map((item) => {
-                                const isActive = pathname === item.href;
+                                const isRoot = pathname === '/';
+
+                                // 메인일 경우 item.href = '/' 일경우에 active, 아닐 경우 startsWith
+                                const isActive =
+                                    item.href === '/' ? isRoot : pathname.startsWith(item.href);
 
                                 return (
                                     <li key={item.name}>
