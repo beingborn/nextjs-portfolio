@@ -3,6 +3,7 @@ export { default as Card } from './Card.tsx';
 export { default as CustomInput } from './CustomInput.tsx';
 export { default as Loading } from './Loading.tsx';
 export { default as Spinner } from './Spinner.tsx';
+export { default as Tabs } from './Tab/TabProvider.tsx';
 
 // export {
 //     AccordionContent,
