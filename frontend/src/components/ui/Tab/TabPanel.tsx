@@ -5,7 +5,7 @@ const TabPanel = ({ children, value }: TabPanelType) => {
     const { activeTab } = useTabContext();
 
     return (
-        <div id={value} className={`${activeTab === value ? 'block' : 'hidden'}`}>
+        <div role="tabpanel" id={value} className={`${activeTab === value ? 'block' : 'hidden'}`}>
             {children}
         </div>
     );

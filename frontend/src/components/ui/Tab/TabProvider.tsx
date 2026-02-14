@@ -15,7 +15,7 @@ const TabProvider = ({ children, variant = 'contained', defaultActiveTab }: TabP
         <TabContext.Provider
             value={{ variant, defaultActiveTab, activeTab, setActiveTab: handleSelectActiveTab }}
         >
-            <div className="flex gap-2 items-center">{children}</div>
+            {children}
         </TabContext.Provider>
     );
 };

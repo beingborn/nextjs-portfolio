@@ -12,6 +12,9 @@ export default function UserInterface() {
             <li>
                 <Link href="/ui/custominput">Input</Link>
             </li>
+            <li>
+                <Link href="/ui/tab">Tab</Link>
+            </li>
         </ul>
     );
 }

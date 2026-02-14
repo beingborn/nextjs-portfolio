@@ -1,3 +1,6 @@
+import { tabVariants } from '@/components/ui/Tab/TabVariants';
+import { VariantProps } from 'class-variance-authority';
+
 export type TabVariant = 'text' | 'line' | 'contained';
 
 export interface TabContextType {
@@ -13,9 +16,10 @@ export interface TabProviderType {
     defaultActiveTab: string;
 }
 
-export interface TabType {
+export interface TabType extends VariantProps<typeof tabVariants> {
     value: string;
     children?: React.ReactNode;
+    className?: string;
 }
 
 export interface TabPanelType {
