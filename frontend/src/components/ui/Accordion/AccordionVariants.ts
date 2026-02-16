@@ -1,49 +1,35 @@
 import { cva } from 'class-variance-authority';
 
-const AccodionHeaderVariants = cva('flex items-center', {
+const AccordionHeaderVariants = cva('flex items-center', {
     variants: {
         variant: {
-            line: 'border-b-2 bg-transparent text-text-sub',
-            text: 'bg-transparent text-text-sub',
+            line: 'py-2 px-4 font-bold text-xl',
             nostyle: '',
         },
-        isActive: {
-            true: '',
-            false: '',
-        },
     },
-    compoundVariants: [
-        { variant: 'line', isActive: true, className: 'bg-primary-100' },
-        { variant: 'text', isActive: true, className: 'border-primary-500' },
-        { variant: 'nostyle', isActive: true, className: '' },
-    ],
-
     defaultVariants: {
         variant: 'line',
     },
 });
 
-const AccodionBodyVariants = cva('text-lg py-2 px-4 items-center justify-center', {
-    variants: {
-        variant: {
-            contained: 'rounded-lg text-text-sub',
-            line: 'border-b-2 bg-transparent text-text-sub',
-            text: 'bg-transparent text-text-sub',
+const AccordionBodyVariants = cva(
+    'relative grid transition-[grid-template-rows] duration-500 ease-in-out',
+    {
+        variants: {
+            variant: {
+                line: '',
+                nostyle: '',
+            },
+            isExpanded: {
+                true: 'grid-rows-[1fr]',
+                false: 'grid-rows-[0fr]',
+            },
         },
-        isActive: {
-            true: 'font-bold text-primary-500',
-            false: '',
+
+        defaultVariants: {
+            variant: 'line',
         },
     },
-    compoundVariants: [
-        { variant: 'contained', isActive: true, className: 'bg-primary-100' },
-        { variant: 'line', isActive: true, className: 'border-primary-500' },
-        { variant: 'text', isActive: true, className: '' },
-    ],
+);
 
-    defaultVariants: {
-        variant: 'contained',
-    },
-});
-
-export { AccodionBodyVariants, AccodionHeaderVariants };
+export { AccordionBodyVariants, AccordionHeaderVariants };

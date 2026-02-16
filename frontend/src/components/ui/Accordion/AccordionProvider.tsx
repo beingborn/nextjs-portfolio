@@ -10,6 +10,7 @@ const AccordionProvider = ({
     type = 'single',
     defaultActiveAccordion,
     variant = 'line',
+    className,
 }: AccordionProviderType) => {
     const [activeAccordion, setActiveAccordion] = useState([defaultActiveAccordion]);
 
@@ -46,7 +47,7 @@ const AccordionProvider = ({
                 variant,
             }}
         >
-            {children}
+            <div className={`flex flex-col py-1 ${className}`}>{children}</div>
         </AccordionContext.Provider>
     );
 };

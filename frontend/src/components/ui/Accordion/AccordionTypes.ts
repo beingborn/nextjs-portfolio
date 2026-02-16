@@ -1,4 +1,7 @@
-type AccordionVariant = 'text' | 'line' | 'nostyle';
+import { AccordionBodyVariants } from '@/components/ui/Accordion/AccordionVariants';
+import { VariantProps } from 'class-variance-authority';
+
+type AccordionVariant = 'line' | 'nostyle';
 
 export interface AccordionContextType {
     activeAccordion: string[];
@@ -13,6 +16,7 @@ export interface AccordionProviderType {
     defaultActiveAccordion: string;
     variant?: AccordionVariant;
     type: 'single' | 'multi';
+    className?: string;
 }
 
 export interface AccordionHeaderType {
@@ -20,9 +24,10 @@ export interface AccordionHeaderType {
     value: string;
     expandIcon?: React.ReactNode;
     collapseIcon?: React.ReactNode;
+    className?: string;
 }
 
-export interface AccordionBodyType {
+export interface AccordionBodyType extends VariantProps<typeof AccordionBodyVariants> {
     children?: React.ReactNode;
     value: string;
 }
