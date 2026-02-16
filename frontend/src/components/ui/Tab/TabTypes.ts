@@ -25,4 +25,5 @@ export interface TabType extends VariantProps<typeof tabVariants> {
 export interface TabPanelType {
     value: string;
     children?: React.ReactNode;
+    className?: string;
 }

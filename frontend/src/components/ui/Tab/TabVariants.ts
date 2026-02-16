@@ -1,7 +1,5 @@
 import { cva } from 'class-variance-authority';
 
-const tabWrapVariants = cva('flex items-center overflow-x-auto');
-
 const tabVariants = cva('text-lg py-2 px-4 items-center justify-center', {
     variants: {
         variant: {
@@ -25,4 +23,4 @@ const tabVariants = cva('text-lg py-2 px-4 items-center justify-center', {
     },
 });
 
-export { tabVariants, tabWrapVariants };
+export { tabVariants };

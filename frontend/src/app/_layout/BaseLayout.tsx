@@ -22,7 +22,7 @@ export default function BaseLayout({ children }: { children: React.ReactNode }) 
                     <main className="h-full grow relative basis-0 flex flex-col" id="container">
                         <Header />
                         <div className="pl-1 bg-bg-surface h-full grow" id="contents-wrap">
-                            <div className="p-8 w-full h-full rounded-tl-2xl shadow-lg bg-white">
+                            <div className="px-10 py-8 w-full h-full rounded-tl-2xl shadow-lg bg-white">
                                 {!isHome && <Breadcrumbs />}
                                 {children}
                             </div>
