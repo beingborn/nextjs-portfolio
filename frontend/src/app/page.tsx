@@ -1,6 +1,7 @@
 'use client';
 
-import { Accordions, Tabs } from '@/components/ui';
+import { Accordions, Card, Tabs } from '@/components/ui';
+import Image from 'next/image';
 
 const Resume = '/example.txt';
 
@@ -88,8 +89,59 @@ export default function Home() {
                         </Accordions>
                     </div>
                 </Tabs.Panel>
-                <Tabs.Panel className="flex items-center h-full" value="skillExperience">
-                    스킬
+                <Tabs.Panel className="flex h-full" value="skillExperience">
+                    <div className="mt-20">
+                        <p>이런 기술들을 다룰 수 있습니다</p>
+                        <h2 className="text-3xl font-bold">Skill & Experience</h2>
+                        <Card>
+                            <Card.Body>
+                                {/* 
+                                    Popover 조건 : 
+
+                                    - Trigger를 asChild로 받는다
+                                    - 외부를 클릭 시 닫힌다. ContentRef로 해야할듯?
+                                    
+                                 */}
+
+                                <h4>Basic</h4>
+                                <details>
+                                    <summary>
+                                        <div className="flex items-center gap-1">
+                                            HTML
+                                            <Image
+                                                width="24"
+                                                height="24"
+                                                src="/icon/ico_html.png"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </summary>
+                                    <ul>
+                                        <li>접근성 실무 작업 경험에 기반한 시멘틱 마크업</li>
+                                        <li>WAL-ARIA 접근성 속성에 대한 높은 이해</li>
+                                    </ul>
+                                </details>
+                                <details>
+                                    <summary>CSS</summary>
+                                    <ul>
+                                        <li>최신 CSS, 웹 브라우저 호환 준수</li>
+                                        <li>Nesting, SCSS 등 추가 전처리기 활용</li>
+                                    </ul>
+                                </details>
+                                <details>
+                                    <summary>JAVASCRIPT</summary>
+                                    <ul>
+                                        <li>최신 CSS, 웹 브라우저 호환 준수</li>
+                                        <li>Nesting, SCSS 등 추가 전처리기 활용</li>
+                                    </ul>
+                                </details>
+                            </Card.Body>
+                        </Card>
+                        <div>Framework</div>
+                        <div>Backend</div>
+                        <div>Extra</div>
+                        HTML CSS 자바스크립트 타입스크립트 React Vue Django Supabase AWS
+                    </div>
                 </Tabs.Panel>
                 <Tabs.Panel className="flex items-center h-full" value="contact">
                     콘택트
