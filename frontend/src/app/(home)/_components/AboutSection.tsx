@@ -5,8 +5,9 @@ const RESUME = '/example.txt';
 
 export default function AboutSection() {
     return (
-        <section className="flex items-start justify-between w-full mt-30">
+        <section className="flex items-center justify-between w-full mt-30">
             <div className="flex items-start flex-col gap-4">
+                <div className="h-70 w-60 bg-bg-base"></div>
                 <h3 className="text-4xl leading-normal">
                     <span className="font-bold text-secondary-500">
                         &quot;새로움을 즐기는&quot;
@@ -14,9 +15,12 @@ export default function AboutSection() {
                     <br />
                     프론트엔드 개발자 이민혁입니다.
                 </h3>
-                <p className="text-text-sub">
-                    퍼블리싱경험을 바탕으로 사용성을 가장 우선시하는 개발자입니다
-                </p>
+                <div className="text-text-sub">
+                    <p>퍼블리싱경험을 바탕으로 사용성을 가장 우선시하는 개발자입니다</p>
+                    <p>퍼블리싱경험을 바탕으로 사용성을 가장 우선시하는 개발자입니다</p>
+                    <p>퍼블리싱경험을 바탕으로 사용성을 가장 우선시하는 개발자입니다</p>
+                </div>
+
                 <a
                     className="inline-flex px-4 py-2 bg-secondary-500 text-white rounded-sm"
                     href={RESUME}

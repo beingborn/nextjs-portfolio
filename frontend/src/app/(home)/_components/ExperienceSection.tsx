@@ -1,3 +1,12 @@
+import Image from 'next/image';
+
+const EXPERIENCE = [
+    {
+        comany: '아이티펍',
+        skills: ['html', 'css', 'jquery', 'react', 'sass'],
+    },
+];
+
 export default function ExperienceSection() {
     return (
         <section>
@@ -11,6 +20,17 @@ export default function ExperienceSection() {
                             2024.07 ~ 현재
                         </span>
                         <strong className="text-xl">아이티펍</strong>
+                        <div className="flex items-center gap-2">
+                            {EXPERIENCE[0].skills.map((skill) => (
+                                <Image
+                                    key={skill}
+                                    src={`/icon/ico_${skill}.svg`}
+                                    alt={skill}
+                                    width="24"
+                                    height="24"
+                                />
+                            ))}
+                        </div>
                         <details className="text-lg">
                             <summary>주요 업무 내용</summary>
                             <ul className="pl-4 list-inside list-disc text-text-sub">
