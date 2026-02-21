@@ -12,7 +12,7 @@ const AccordionProvider = ({
     variant = 'line',
     className,
 }: AccordionProviderType) => {
-    const [activeAccordion, setActiveAccordion] = useState([defaultActiveAccordion]);
+    const [activeAccordion, setActiveAccordion] = useState([...defaultActiveAccordion]);
 
     const handleSelectActiveAccordion = (accordionId: string) => {
         if (type == 'single') {

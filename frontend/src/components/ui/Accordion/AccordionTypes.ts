@@ -5,7 +5,7 @@ type AccordionVariant = 'line' | 'nostyle';
 
 export interface AccordionContextType {
     activeAccordion: string[];
-    defaultActiveAccordion: string;
+    defaultActiveAccordion: string[];
     variant?: AccordionVariant;
     setActiveAccordion: (accordionId: string) => void;
 }
@@ -13,7 +13,7 @@ export interface AccordionContextType {
 export interface AccordionProviderType {
     activeAccordion?: string[];
     children?: React.ReactNode;
-    defaultActiveAccordion: string;
+    defaultActiveAccordion: string[];
     variant?: AccordionVariant;
     type: 'single' | 'multi';
     className?: string;
