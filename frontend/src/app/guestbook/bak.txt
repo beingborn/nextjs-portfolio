@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import useDataApi from '../../../hooks/useDataApi';
+import useFetch from '../../../hooks/useFetch';
 import { Button, PageTitle } from '../../components/common';
 
 const TITLEMAXLENGTH = 20;
@@ -103,7 +103,7 @@ function GuestBookList({ guestbook }) {
 }
 
 export default function GuestbookPage() {
-    const { data, loading, error, fetchData } = useDataApi('/api/guestbook');
+    const { data, loading, error, fetchData } = useFetch('/api/guestbook');
     const [guestbook, setGuestBook] = useState([]);
     const [form, setForm] = useState(initialForm);
 

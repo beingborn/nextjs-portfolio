@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 
 const URLMAP: Record<string, string> = {
     project: '프로젝트',
-    guestbook: '게스트북',
+    guestbook: '방명록',
     login: '로그인',
     about: '포트폴리오 스토리',
     ui: '컴포넌트',

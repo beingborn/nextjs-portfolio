@@ -1,17 +1,16 @@
 import { cn } from '@/utils/style';
 import { cva, VariantProps } from 'class-variance-authority';
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, TextareaHTMLAttributes } from 'react';
 
-const inputVariants = cva(
-    'bg-white outline-offset-0  w-full rounded-md focus:outline-secondary-100 border border-border-primary-500 px-2 placeholder:text-text-sub',
+const textAreaVariants = cva(
+    'bg-white outline-offset-0 w-full rounded-md focus:outline-secondary-100 border border-border-primary-500 px-2 py-2 placeholder:text-text-sub',
     {
         variants: {
             size: {
-                sm: 'h-8',
-                md: 'h-10',
-                lg: 'h-14',
+                sm: 'h-24',
+                md: 'h-32',
+                lg: 'h-40',
             },
-
             isDisabled: {
                 true: 'bg-bg-disabled border-border-primary-500',
                 false: '',
@@ -32,7 +31,7 @@ const inputVariants = cva(
     },
 );
 
-const inputMessageVariants = cva('text-sm', {
+const textAreaMessageVariants = cva('text-sm', {
     variants: {
         state: {
             default: '',
@@ -44,11 +43,10 @@ const inputMessageVariants = cva('text-sm', {
     },
 });
 
-/* 기본 타입으로 Size가 있어 Omit으로 타입해제 */
-interface InputProps
-    extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
-        VariantProps<typeof inputVariants> {
-    inputName?: string;
+interface TextAreaProps
+    extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>,
+        VariantProps<typeof textAreaVariants> {
+    textAreaName?: string;
     disabled?: boolean;
     label?: string;
     className?: string;
@@ -58,13 +56,12 @@ interface InputProps
     children?: React.ReactNode;
 }
 
-export type InputState = VariantProps<typeof inputVariants>['state'];
+export type TextAreaState = VariantProps<typeof textAreaVariants>['state'];
 
-const CustomInput = forwardRef<HTMLInputElement, InputProps>(
+const CustomTextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     (
         {
-            inputName,
-            type = 'text',
+            textAreaName,
             disabled,
             label,
             size,
@@ -80,27 +77,29 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>(
     ) => {
         return (
             <div className={`relative flex flex-col gap-2 items-start ${fullWidth && 'w-full'}`}>
-                {label && <label htmlFor={inputName}>{label}</label>}
-                <input
+                {label && <label htmlFor={textAreaName}>{label}</label>}
+                <textarea
                     ref={ref}
                     placeholder={placeholder}
-                    className={cn(inputVariants({ size, isDisabled: disabled, state }), className)}
+                    className={cn(
+                        textAreaVariants({ size, isDisabled: disabled, state }),
+                        'resize-none',
+                        className,
+                    )}
                     disabled={disabled}
-                    type={type}
-                    id={inputName || ''}
-                    name={inputName}
+                    id={textAreaName || ''}
+                    name={textAreaName}
                     {...rest}
                 />
                 {children}
                 {state !== 'default' && message && (
-                    <p className={cn(inputMessageVariants({ state }))}>{message}</p>
+                    <p className={cn(textAreaMessageVariants({ state }))}>{message}</p>
                 )}
             </div>
         );
     },
 );
 
-// React Devtools 디버깅용
-CustomInput.displayName = 'CustomInput';
+CustomTextArea.displayName = 'CustomTextArea';
 
-export default CustomInput;
+export default CustomTextArea;
