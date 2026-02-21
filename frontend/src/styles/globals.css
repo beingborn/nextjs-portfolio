@@ -47,14 +47,10 @@
     --color-border-primary-300: #ededed;
 
     --z-index-loading: 100;
+    --z-index-popover: 101;
 }
 
 /* Reset */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
 button {
     cursor: pointer;
 }
