@@ -24,13 +24,14 @@ class Project(models.Model):
     
 class Post(models.Model):
     id = models.AutoField(unique=True, primary_key=True, auto_created=True)
+    title = models.CharField(max_length=100, default="")
     content = models.CharField(max_length=255)   
     files = models.FileField()   
     created_at = models.DateField()
     modified_at = models.DateField()
     
     def __str__(self):
-        return self.name
+        return self.title
     
 class Guestbook(models.Model):
     id = models.AutoField(unique=True, primary_key=True, auto_created=True)

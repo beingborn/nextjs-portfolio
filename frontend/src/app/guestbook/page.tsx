@@ -15,9 +15,7 @@ interface Guestbook {
     color: string;
 }
 
-/* 
-    Interface는 속성 확장 + Omit 등을 이용해 기존 타입을 별칭할 경우 type이 더 적합
-*/
+/* Interface는 속성 확장 + Omit 등을 이용해 기존 타입을 별칭할 경우 type이 더 적합 */
 type GuestbookForm = Omit<Guestbook, 'id'>;
 
 const POSTITCOLORS = ['#d1e8f2', '#fdcc84', '#feebda', '#fee6e6', '#e7f1f2'];
