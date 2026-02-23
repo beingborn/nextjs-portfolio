@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { portfolioConfig } from 'portfolio.config.js';
+import { portfolioConfig } from 'portfolio.config.ts';
 
 const Header = () => {
     return (

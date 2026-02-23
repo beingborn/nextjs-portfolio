@@ -1,6 +1,6 @@
 'use client';
 
-import { portfolioConfig } from 'portfolio.config.js';
+import { portfolioConfig } from 'portfolio.config.ts';
 
 const Footer = () => {
     return (
