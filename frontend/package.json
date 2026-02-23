@@ -6,7 +6,8 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "storybook": "storybook dev"
     },
     "dependencies": {
         "@emailjs/browser": "^4.4.1",
@@ -20,11 +21,14 @@
         "react-dom": "^19.0.0",
         "react-hotkeys-hook": "^5.1.0",
         "react-js-pagination": "^3.0.3",
+        "storybook": "^10.2.10",
         "tailwind-merge": "^3.4.0",
         "zustand": "^5.0.11"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
+        "@storybook/addon-docs": "^10.2.10",
+        "@storybook/nextjs": "^10.2.10",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
         "@types/react": "^19.1.8",

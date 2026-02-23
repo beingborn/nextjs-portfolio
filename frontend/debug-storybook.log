@@ -1,0 +1,16 @@
+[23:15:18.717] [INFO] storybook v10.2.10
+[23:15:19.119] [ERROR] [38;2;241;97;97mSB_CORE-COMMON_0001 (MissingFrameworkFieldError): Could not find a 'framework' field in Storybook config.
+
+Please run 'npx storybook automigrate' to automatically fix your config.
+
+More info: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#new-framework-api
+[39m
+    at validateFrameworkName (file:///C:/Users/mindo/Desktop/CodeProject/nextjs-portfolio/frontend/node_modules/storybook/dist/_node-chunks/chunk-URMZXQZT.js:12124:11)
+    at buildDevStandalone (file:///C:/Users/mindo/Desktop/CodeProject/nextjs-portfolio/frontend/node_modules/storybook/dist/core-server/index.js:7553:28)
+    at async withTelemetry (file:///C:/Users/mindo/Desktop/CodeProject/nextjs-portfolio/frontend/node_modules/storybook/dist/_node-chunks/chunk-S3MWHNYJ.js:218:12)
+    at async dev (file:///C:/Users/mindo/Desktop/CodeProject/nextjs-portfolio/frontend/node_modules/storybook/dist/bin/core.js:2734:3)
+    at async _Command.<anonymous> (file:///C:/Users/mindo/Desktop/CodeProject/nextjs-portfolio/frontend/node_modules/storybook/dist/bin/core.js:2803:92)
+[23:15:19.129] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[23:15:46.281] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":false}
+[23:15:46.285] [INFO] Storybook collects completely anonymous usage telemetry. We use it to shape Storybook's roadmap and prioritize features. You can learn more, including how to opt out, at https://storybook.js.org/telemetry
