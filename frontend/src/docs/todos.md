@@ -10,16 +10,15 @@ Backend
 
 Frontend
 
-- 방명록 추가 기능
+- [v] 방명록 추가 기능
+- [] UI 테스트 페이지 아이디네이션
 
 ---
 
 ## ✅ 작업 내용
 
-###
-
 - constants > api : post 추가
-- usePost 공통 hooks 생성
+- api > post.ts 생성
 
 커밋:
 

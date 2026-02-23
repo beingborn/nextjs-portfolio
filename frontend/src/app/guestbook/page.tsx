@@ -1,22 +1,16 @@
 'use client';
 
+import { createGuestbookEntry } from '@/api/post';
 import { Button, CustomInput, CustomTextArea, Loading, PageTitle } from '@/components/ui';
 import { InputState } from '@/components/ui/CustomInput';
 import API from '@/constants/api';
 import useFetch from '@/hooks/useFetch';
 import { cn } from '@/utils/style';
 import { useState } from 'react';
-
-interface Guestbook {
-    id: number;
-    title: string;
-    author: string;
-    text: string;
-    color: string;
-}
+import { GuestbookEntity } from 'types';
 
 /* Interface는 속성 확장 + Omit 등을 이용해 기존 타입을 별칭할 경우 type이 더 적합 */
-type GuestbookForm = Omit<Guestbook, 'id'>;
+type GuestbookForm = Omit<GuestbookEntity, 'id'>;
 
 const POSTITCOLORS = ['#d1e8f2', '#fdcc84', '#feebda', '#fee6e6', '#e7f1f2'];
 
@@ -57,7 +51,10 @@ export default function GuestBook() {
         data: guestbookList,
         error: guestbookListError,
         loading,
-    } = useFetch<Guestbook[]>(API.GUESTBOOK);
+        fetchData: refetchGuestbookList,
+    } = useFetch<GuestbookEntity[]>(API.GUESTBOOK);
+
+    const hasReachedGuestbookLimit = guestbookList.length > 40;
 
     const [form, setForm] = useState<GuestbookForm>({
         title: '',
@@ -107,9 +104,10 @@ export default function GuestBook() {
         }));
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        // 에러 핸들링
         if (form.title === '') {
             console.log('공백');
             console.log(error.title.state);
@@ -139,9 +137,11 @@ export default function GuestBook() {
             color: form.color,
         };
 
-        console.log(newPost);
+        // createGuestbook 자체는 Promise<response>를 반환하기 때문에 호출하는 쪽에서도 await을 써주어야함
+        const response = await createGuestbookEntry(newPost);
+        console.log(response);
 
-        alert('서밋 성공');
+        refetchGuestbookList();
 
         setForm({
             title: '',
@@ -165,6 +165,7 @@ export default function GuestBook() {
                             <div className="flex items-center gap-3">
                                 {POSTITCOLORS.map((color) => (
                                     <button
+                                        disabled={hasReachedGuestbookLimit}
                                         type="button"
                                         className={cn(
                                             'w-6 h-6 rounded border border-gray-600 hover:scale-110 transition-transform',
@@ -180,30 +181,33 @@ export default function GuestBook() {
                                 ))}
                             </div>
                             <CustomInput
+                                disabled={hasReachedGuestbookLimit}
                                 value={form.author}
-                                maxLength={20}
+                                maxLength={10}
                                 state={error.author.state}
                                 message={error.author.message}
                                 onChange={(e) => handleFormInput('author', e.target.value)}
                                 placeholder="작성자명을 입력하세요"
                             >
-                                <p className="absolute right-2 top-5 -translate-y-1/2">
-                                    <span>{form.author.length}</span>/<span>20</span>
+                                <p className="absolute right-2 top-5 -translate-y-1/2 text-text-muted">
+                                    <span>{form.author.length}</span>/<span>10</span>
                                 </p>
                             </CustomInput>
                             <CustomInput
+                                disabled={hasReachedGuestbookLimit}
                                 value={form.title}
                                 state={error.title.state}
                                 message={error.title.message}
-                                maxLength={20}
+                                maxLength={15}
                                 onChange={(e) => handleFormInput('title', e.target.value)}
                                 placeholder="제목을 입력하세요"
                             >
-                                <p className="absolute right-2 top-5 -translate-y-1/2">
-                                    <span>{form.title.length}</span>/<span>20</span>
+                                <p className="absolute right-2 top-5 -translate-y-1/2 text-text-muted">
+                                    <span>{form.title.length}</span>/<span>15</span>
                                 </p>
                             </CustomInput>
                             <CustomTextArea
+                                disabled={hasReachedGuestbookLimit}
                                 placeholder="내용을 입력하세요"
                                 className="h-50"
                                 state={error.text.state}
@@ -212,12 +216,13 @@ export default function GuestBook() {
                                 onChange={(e) => handleFormInput('text', e.target.value)}
                                 maxLength={100}
                             >
-                                <p className="absolute right-2 bottom-2">
+                                <p className="absolute right-2 bottom-2 text-text-muted">
                                     <span>{form.text.length}</span>/<span>100</span>
                                 </p>
                             </CustomTextArea>
-
-                            <Button type="submit">완료</Button>
+                            <Button disabled={hasReachedGuestbookLimit} type="submit">
+                                완료
+                            </Button>
                         </div>
                     </form>
                 </div>
