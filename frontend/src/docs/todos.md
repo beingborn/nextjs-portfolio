@@ -11,7 +11,7 @@ Backend
 Frontend
 
 - [v] 방명록 추가 기능
-- [] UI 테스트 페이지 아이디네이션
+- [v] UI 테스트 페이지 아이디네이션
 
 ---
 
@@ -19,9 +19,5 @@ Frontend
 
 - constants > api : post 추가
 - api > post.ts 생성
-
-커밋:
-
-- feat:
 
 ---
