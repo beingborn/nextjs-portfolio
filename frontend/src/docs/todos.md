@@ -21,3 +21,18 @@ Frontend
 - api > post.ts 생성
 
 ---
+
+# 📅 2026-02-24
+
+## 🎯 오늘 목표
+
+- [v] storybook static 빌드
+- [] gh pages build 연결
+
+---
+
+## ✅ 작업 내용
+
+- package.json Story book build Script 생성
+
+---

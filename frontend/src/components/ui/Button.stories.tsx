@@ -48,7 +48,7 @@ export const OutlineSecondary: Story = {
     args: {
         variant: 'outline',
         intent: 'secondary',
-        children: '아웃라인 버튼',
+        children: '아웃라인 테스트',
     },
 };
 

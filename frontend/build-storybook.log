@@ -1,0 +1,52 @@
+
+> typescript_next@0.1.0 build-storybook
+> storybook build --output-dir=C:\Users\ITPUB_PC\AppData\Local\Temp\chromatic--21488-jRIQsGNaTrIu
+
+
+[90m┌[39m  Building storybook v10.2.10
+[90m│[39m
+[32m◇[39m  Cleaning outputDir:
+[90m│[39m  [36m../../../../../AppData/Local/Temp/chromatic--21488-jRIQsGNaTrIu[39m
+[90m│[39m
+[32m◇[39m  Loading presets
+[90m│[39m
+[32m◇[39m  Building manager..
+[90m│[39m
+[34m●[39m  Building preview..
+[90m│[39m
+[33m▲[39m  No story files found for the specified pattern: [34msrc\**\*.mdx[39m
+[90m│[39m
+[34m●[39m  Addon-docs: using MDX3
+[90m│[39m
+[34m●[39m  Copying static files: [36mpublic[39m at
+[90m│[39m  [36m..\..\..\..\..\AppData\Local\Temp\chromatic--21488-jRIQsGNaTrIu[39m
+[90m│[39m
+[34m●[39m  Using implicit CSS loaders
+[90m│[39m
+[34m●[39m  Using SWC as compiler
+[90m│[39m
+[34m●[39m  Using default Webpack5 setup
+[90m│[39m
+[33m▲[39m  asset size limit: The following asset(s) exceed the recommended size
+[90m│[39m  limit (244 KiB).
+[90m│[39m  This can impact web performance.
+[90m│[39m  Assets:
+[90m│[39m  356.d6bf3d45.iframe.bundle.js (361 KiB)
+[90m│[39m  980.8eed2f48.iframe.bundle.js (1.03 MiB)
+[90m│[39m  684.b1a68757.iframe.bundle.js (1.1 MiB)
+[90m│[39m
+[33m▲[39m  entrypoint size limit: The following entrypoint(s) combined asset size
+[90m│[39m  exceeds the recommended limit (244 KiB). This can impact web
+[90m│[39m  performance.
+[90m│[39m  Entrypoints:
+[90m│[39m  main (1.19 MiB)
+[90m│[39m  runtime~main.8d6506bb.iframe.bundle.js
+[90m│[39m  684.b1a68757.iframe.bundle.js
+[90m│[39m  main.7b8d67ab.iframe.bundle.js
+
+[90m│[39m
+[32m◇[39m  Output directory:
+[90m│[39m  C:/Users/ITPUB_PC/AppData/Local/Temp/chromatic--21488-jRIQsGNaTrIu
+[90m│[39m
+[90m└[39m  Storybook build completed successfully
+
