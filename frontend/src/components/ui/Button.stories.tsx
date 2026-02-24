@@ -6,6 +6,8 @@ const meta: Meta<typeof Button> = {
     title: 'UI/Button',
     component: Button,
     tags: ['autodocs'],
+    // args : 값
+    // argsType : 값 편집/표시하는 방식
     args: {
         children: '버튼',
         variant: 'contained',
