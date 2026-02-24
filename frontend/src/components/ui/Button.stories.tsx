@@ -57,7 +57,7 @@ export const TextPrimary: Story = {
     args: {
         variant: 'text',
         intent: 'primary',
-        children: '텍스트 버튼',
+        children: '텍스트 테스트',
     },
 };
 
