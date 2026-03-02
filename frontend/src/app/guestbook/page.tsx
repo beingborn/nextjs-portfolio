@@ -1,18 +1,14 @@
 'use client';
 
 import { createGuestbookEntry } from '@/api/post';
-import { Button, CustomInput, CustomTextArea, Loading, PageTitle } from '@/components/ui';
+import { Loading, PageTitle } from '@/components/ui';
 import { InputState } from '@/components/ui/CustomInput';
 import API from '@/constants/api';
+import GuestbookForm from '@/features/guestbook/GuestbookForm';
+import GuestbookList from '@/features/guestbook/GuestbookList';
 import useFetch from '@/hooks/useFetch';
-import { cn } from '@/utils/style';
 import { useState } from 'react';
 import { GuestbookEntity } from 'types';
-
-/* Interface는 속성 확장 + Omit 등을 이용해 기존 타입을 별칭할 경우 type이 더 적합 */
-type GuestbookForm = Omit<GuestbookEntity, 'id'>;
-
-const POSTITCOLORS = ['#d1e8f2', '#fdcc84', '#feebda', '#fee6e6', '#e7f1f2'];
 
 /* 
     1. 게스트북 데이터 페칭 
@@ -54,9 +50,11 @@ export default function GuestBook() {
         fetchData: refetchGuestbookList,
     } = useFetch<GuestbookEntity[]>(API.GUESTBOOK);
 
+    const POSTITCOLORS = ['#d1e8f2', '#fdcc84', '#feebda', '#fee6e6', '#e7f1f2'];
+
     const hasReachedGuestbookLimit = guestbookList.length > 40;
 
-    const [form, setForm] = useState<GuestbookForm>({
+    const [form, setForm] = useState({
         title: '',
         author: '',
         text: '',
@@ -159,86 +157,15 @@ export default function GuestBook() {
             <PageTitle title="방명록" />
             <p className="mb-6">방문해주셔서 감사합니다 자유로운 피드백 부탁드립니다</p>
             <section className="flex gap-8 items-start justify-between">
-                <div className="shrink-0 w-70 p-4 mb-6" style={{ backgroundColor: form.color }}>
-                    <form onSubmit={handleSubmit}>
-                        <div className="flex flex-col gap-3">
-                            <div className="flex items-center gap-3">
-                                {POSTITCOLORS.map((color) => (
-                                    <button
-                                        disabled={hasReachedGuestbookLimit}
-                                        type="button"
-                                        className={cn(
-                                            'w-6 h-6 rounded border border-gray-600 hover:scale-110 transition-transform',
-                                            {
-                                                'w-8 h-8 border-2': form.color === color,
-                                            },
-                                        )}
-                                        key={color}
-                                        value={color}
-                                        onClick={() => handleFormInput('color', color)}
-                                        style={{ backgroundColor: color }}
-                                    ></button>
-                                ))}
-                            </div>
-                            <CustomInput
-                                disabled={hasReachedGuestbookLimit}
-                                value={form.author}
-                                maxLength={10}
-                                state={error.author.state}
-                                message={error.author.message}
-                                onChange={(e) => handleFormInput('author', e.target.value)}
-                                placeholder="작성자명을 입력하세요"
-                            >
-                                <p className="absolute right-2 top-5 -translate-y-1/2 text-text-muted">
-                                    <span>{form.author.length}</span>/<span>10</span>
-                                </p>
-                            </CustomInput>
-                            <CustomInput
-                                disabled={hasReachedGuestbookLimit}
-                                value={form.title}
-                                state={error.title.state}
-                                message={error.title.message}
-                                maxLength={15}
-                                onChange={(e) => handleFormInput('title', e.target.value)}
-                                placeholder="제목을 입력하세요"
-                            >
-                                <p className="absolute right-2 top-5 -translate-y-1/2 text-text-muted">
-                                    <span>{form.title.length}</span>/<span>15</span>
-                                </p>
-                            </CustomInput>
-                            <CustomTextArea
-                                disabled={hasReachedGuestbookLimit}
-                                placeholder="내용을 입력하세요"
-                                className="h-50"
-                                state={error.text.state}
-                                message={error.text.message}
-                                value={form.text}
-                                onChange={(e) => handleFormInput('text', e.target.value)}
-                                maxLength={100}
-                            >
-                                <p className="absolute right-2 bottom-2 text-text-muted">
-                                    <span>{form.text.length}</span>/<span>100</span>
-                                </p>
-                            </CustomTextArea>
-                            <Button disabled={hasReachedGuestbookLimit} type="submit">
-                                완료
-                            </Button>
-                        </div>
-                    </form>
-                </div>
-                <ul className="grid grid-cols-4 gap-4">
-                    {guestbookList?.map((guest) => (
-                        <li
-                            className="shadow-md p-4 aspect-video"
-                            style={{ backgroundColor: guest.color }}
-                            key={guest.id}
-                        >
-                            <p className="text-text-sub">{guest.author}</p>
-                            <strong className="text-lg">{guest.title}</strong>
-                            <p>{guest.text}</p>
-                        </li>
-                    ))}
-                </ul>
+                <GuestbookForm
+                    error={error}
+                    colors={POSTITCOLORS}
+                    onFieldChange={handleFormInput}
+                    onSubmit={handleSubmit}
+                    form={form}
+                    disabled={hasReachedGuestbookLimit}
+                />
+                <GuestbookList guestbooklist={guestbookList} />
             </section>
         </>
     );
