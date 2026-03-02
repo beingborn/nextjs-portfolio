@@ -6,21 +6,11 @@ import { ErrorState, GuestbookEntity } from 'types';
 type GuestbookForm = Omit<GuestbookEntity, 'id'>;
 
 interface GuestbookFormProps {
-    /* form 데이터 */
     form: GuestbookForm;
-
     colors: string[];
-
-    /* disabled */
     disabled: boolean;
-
-    /* Input Field 핸들링 함수 */
     onFieldChange: (name: string, value: string) => void;
-
-    /* Error 객체 */
     error: ErrorState;
-
-    /* onSubmit */
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
