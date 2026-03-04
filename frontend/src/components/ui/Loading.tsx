@@ -3,7 +3,7 @@
 import Spinner from '@/components/ui/Spinner';
 import { useEffect } from 'react';
 
-export default function Loading({ text }: { text: string }) {
+export default function Loading({ text }: { text?: string }) {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
 
