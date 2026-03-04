@@ -18,7 +18,8 @@ from rest_framework import status
 # 프로젝트 목록 조회 
 class ProjectList(APIView):
     def get(self, request, format=None):
-        projects = Project.objects.all()
+        # order_by '-' 있으면 내림차순 (최신순) 없으면 오름차순
+        projects = Project.objects.all().order_by('-start_date')
         serializer = ProjectSerializer(projects, many = True)
         return Response(serializer.data)
 

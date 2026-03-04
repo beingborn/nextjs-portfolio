@@ -8,9 +8,8 @@ class Project(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     project_members = models.SmallIntegerField()
-    title = models.CharField(max_length=30)
     link = models.CharField(max_length=30)
-    skills = models.CharField(max_length=50)
+    skills = models.JSONField(default=list, blank=True)
     
     CHOICES = [
         ('sideproject', '사이드 프로젝트'),
