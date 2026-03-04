@@ -5,6 +5,7 @@ export default function UserInterface() {
     return (
         <section>
             <Link
+                target="_blank"
                 className="text-white inline-flex items-center gap-2 border p-2 bg-secondary-500 hover:underline rounded-lg  transition-all duration-300"
                 href="https://699d535ab73546f406674150-uoqrcznzfx.chromatic.com/?path=/docs/ui-button--docs"
             >

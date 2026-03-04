@@ -1,12 +1,20 @@
 'use client';
 
+import { X } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 
 // Portal은 서버에서 렌더링하지 않고, 클라이언트에서만 실행
 const Portal = dynamic(() => import('./Portal'), { ssr: false });
 
-export default function CommonModal({ title, onClose, isOpen, children }) {
+interface CommonModalProps {
+    title?: string;
+    onClose: () => void;
+    isOpen: boolean;
+    children: React.ReactNode;
+}
+
+export default function CommonModal({ title, onClose, isOpen, children }: CommonModalProps) {
     useEffect(() => {
         if (isOpen) {
             document.body.classList.add('overflow-hidden');
@@ -33,9 +41,9 @@ export default function CommonModal({ title, onClose, isOpen, children }) {
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Modal Content */}
-                        <div className="bg-white p-8 min-h-[400px] rounded-lg shadow-sm ">
+                        <div className="bg-white p-8 min-h-100 rounded-lg shadow-sm ">
                             {/* Modal Header */}
-                            <div className="pb-4 border-b border-border-pri flex justify-between">
+                            <div className="pb-4 border-b border-border-primary-500 flex justify-between">
                                 <h2 className="text-xl font-bold">{title}</h2>
                                 <button type="button" onClick={onClose}>
                                     <X size="20" />
