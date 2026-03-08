@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import portfolio.views as views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +28,6 @@ urlpatterns = [
     path('api/post/<int:pk>/', views.PostDetail.as_view(), name="post-detail"),
     path('api/guestbook', views.GuestbookList.as_view(), name="guest-book"),
     path('api-auth/', include('rest_framework.urls'))
-]
+] 
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

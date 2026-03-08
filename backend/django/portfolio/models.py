@@ -3,7 +3,7 @@ from django.db import models
 class Project(models.Model):
     id = models.AutoField(unique=True, primary_key=True, auto_created=True)
     title = models.CharField(max_length=30)
-    thumbnail = models.ImageField()
+    thumbnail = models.ImageField(upload_to="images/")
     description = models.CharField(max_length=255)
     start_date = models.DateField()
     end_date = models.DateField()

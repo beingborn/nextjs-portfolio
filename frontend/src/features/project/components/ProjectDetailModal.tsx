@@ -59,11 +59,11 @@ export default function ProjectDetailModal({ selectedProject, onClose }: Project
                         </div>
                     </div>
                 </div>
-                <div className="w-full h-50">
-                    <img
-                        className="w-full h-full"
+                <div className="w-full h-50 relative">
+                    <Image
+                        fill
                         style={{ objectFit: 'cover' }}
-                        src={'https://placehold.co/600x400'}
+                        src={selectedProject.thumbnail}
                         alt={selectedProject.description}
                     />
                 </div>

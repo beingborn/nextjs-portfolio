@@ -20,7 +20,7 @@ class ProjectList(APIView):
     def get(self, request, format=None):
         # order_by '-' 있으면 내림차순 (최신순) 없으면 오름차순
         projects = Project.objects.all().order_by('-start_date')
-        serializer = ProjectSerializer(projects, many = True)
+        serializer = ProjectSerializer(projects, many = True, context={"request": request})
         return Response(serializer.data)
 
 # 프로젝트 상세 조회 
