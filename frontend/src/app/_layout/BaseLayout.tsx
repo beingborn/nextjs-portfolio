@@ -25,7 +25,7 @@ export default function BaseLayout({ children }: { children: React.ReactNode }) 
                             className="bg-bg-surface overflow-hidden shadow-lg w-full h-full grow"
                             id="contents-wrap"
                         >
-                            <div className="w-full rounded-tl-2xl px-10 py-8 w-full h-full bg-white">
+                            <div className="w-full rounded-tl-2xl px-10 py-8 h-full bg-white">
                                 <div className="max-w-7xl ">
                                     {!isHome && <Breadcrumbs />}
                                     {children}

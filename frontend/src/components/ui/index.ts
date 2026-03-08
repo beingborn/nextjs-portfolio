@@ -7,6 +7,7 @@ export { default as CustomTextArea } from './CustomTextArea.tsx';
 export { default as Loading } from './Loading.tsx';
 export { default as PageTitle } from './PageTitle.tsx';
 export { default as Popover } from './Popover/PopoverProvider.tsx';
+export { default as SelectBox } from './SelectBox.tsx';
 export { default as Spinner } from './Spinner.tsx';
 export { default as Tabs } from './Tab/TabProvider.tsx';
 

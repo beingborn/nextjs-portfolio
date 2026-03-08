@@ -13,8 +13,6 @@ export default function ProjectList({ projectList, onOpenModal }: ProjectListPro
         return <p className="mt-4 text-text-sub">프로젝트가 없습니다.</p>;
     }
 
-    console.log(projectList);
-
     return (
         <div className="mt-4 grid grid-cols-3 gap-x-4 gap-y-8">
             {projectList.map((project) => (

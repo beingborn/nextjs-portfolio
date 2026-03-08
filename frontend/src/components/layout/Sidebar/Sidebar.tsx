@@ -3,6 +3,7 @@ import MainLogoSymbol from '@/assets/logo_symbol.svg';
 import SidebarMenuButton from '@/components/layout/Sidebar/SidebarMenuButton';
 import useSidebarStore from '@/store/sidebar';
 import {
+    ChevronsLeftRight,
     Component,
     House,
     Newspaper,
@@ -21,6 +22,7 @@ const navItems = [
     { name: 'Guestbook', icon: <NotebookPen />, href: '/guestbook' },
     { name: 'User Interface', icon: <Component />, href: '/ui' },
     { name: 'Board', icon: <Newspaper />, href: '/board' },
+    { name: 'About Portfolio', icon: <ChevronsLeftRight />, href: '/about' },
 ];
 
 export default function Sidebar() {
@@ -66,9 +68,6 @@ export default function Sidebar() {
                             })}
                         </ul>
                     </nav>
-                </div>
-                <div className="mt-auto p-5">
-                    <Link href="/about">About Portfolio</Link>
                 </div>
             </div>
         </aside>
