@@ -1,7 +1,8 @@
 'use client';
 
-import { CommonModal, Loading, PageTitle, Tabs } from '@/components/ui';
+import { Loading, PageTitle, Tabs } from '@/components/ui';
 import API from '@/constants/api';
+import ProjectDetailModal from '@/features/project/components/ProjectDetailModal';
 import ProjectList from '@/features/project/components/ProjectList';
 import useFetch from '@/hooks/useFetch';
 import { useState } from 'react';
@@ -37,7 +38,7 @@ import { ProjectEntity } from 'types';
 */
 
 export default function Project() {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [selectedProject, setSelectedProject] = useState<ProjectEntity | null>(null);
     const {
         data: projectList,
         error: projectListError,
@@ -50,12 +51,12 @@ export default function Project() {
     const companyProjectList = projectList.filter((project) => project.type === 'workproject');
     const personalProjectList = projectList.filter((project) => project.type === 'sideproject');
 
-    const showModal = () => {
-        setIsModalOpen(true);
+    const showModal = (project: ProjectEntity) => {
+        setSelectedProject(project);
     };
 
     const hideModal = () => {
-        setIsModalOpen(false);
+        setSelectedProject(null);
     };
 
     return (
@@ -68,20 +69,21 @@ export default function Project() {
                     <Tabs.Button value="personal">개인 프로젝트</Tabs.Button>
                 </div>
                 <Tabs.Panel value="all">
-                    <ProjectList projectList={projectList} />
+                    <ProjectList onOpenModal={showModal} projectList={projectList} />
                 </Tabs.Panel>
                 <Tabs.Panel value="company">
-                    <ProjectList projectList={companyProjectList} />
+                    <ProjectList onOpenModal={showModal} projectList={companyProjectList} />
                 </Tabs.Panel>
                 <Tabs.Panel value="personal">
-                    <ProjectList projectList={personalProjectList} />
+                    <ProjectList onOpenModal={showModal} projectList={personalProjectList} />
                 </Tabs.Panel>
             </Tabs>
-
-            <button onClick={() => showModal()}>테스트</button>
-            <CommonModal title="프로젝트 제목" isOpen={isModalOpen} onClose={hideModal}>
-                테스트
-            </CommonModal>
+            {selectedProject && (
+                <ProjectDetailModal
+                    onClose={hideModal}
+                    selectedProject={selectedProject}
+                ></ProjectDetailModal>
+            )}
         </>
     );
 }

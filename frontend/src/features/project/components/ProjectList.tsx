@@ -5,9 +5,10 @@ import { ProjectEntity } from 'types';
 
 interface ProjectListProps {
     projectList: ProjectEntity[];
+    onOpenModal: (project: ProjectEntity) => void;
 }
 
-export default function ProjectList({ projectList }: ProjectListProps) {
+export default function ProjectList({ projectList, onOpenModal }: ProjectListProps) {
     if (projectList.length === 0) {
         return <p className="mt-4 text-text-sub">프로젝트가 없습니다.</p>;
     }
@@ -41,7 +42,7 @@ export default function ProjectList({ projectList }: ProjectListProps) {
                             </div>
                             <h3 className="text-xl font-bold my-4">{project.title}</h3>
                             <p className="text-text-sub mb-3">{project.description}</p>
-                            <Button>상세보기</Button>
+                            <Button onClick={() => onOpenModal(project)}>상세보기</Button>
                         </div>
                     </Card.Body>
                 </Card>
