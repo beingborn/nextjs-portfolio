@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "frontend-design-system": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "computedHash": "da8fe39e337e255e6cffa99bec61458afbfb843c0b01b66012f628b5aabdb5b6"
+    }
+  }
+}

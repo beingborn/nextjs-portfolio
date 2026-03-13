@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { ChevronDown } from 'lucide-react';
 
 const selectVariants = cva(
-    'bg-white outline-offset-0  w-full rounded-md focus:outline-secondary-100 border border-border-primary-500 px-2 placeholder:text-text-sub',
+    'appearance-none bg-white outline-offset-0  w-full rounded-md focus:outline-secondary-100 border border-border-primary-500 pl-4 pr-12 placeholder:text-text-sub',
     {
         variants: {
             size: {
@@ -53,7 +53,7 @@ interface SelectProps extends VariantProps<typeof selectVariants> {
     options: Options[];
     label?: string;
     placeholder?: string;
-    selectedValue?: string;
+    selectedValue: string | number;
     children?: React.ReactNode;
     selectName?: string;
     onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;

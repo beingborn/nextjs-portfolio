@@ -1,7 +1,9 @@
-'use client';
+/* 
+    1. Table 
+    
+*/
 
 import { useRouter } from 'next/navigation';
-import React from 'react';
 
 const Header = ({ column, children }) => {
     return (

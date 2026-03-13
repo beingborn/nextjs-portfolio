@@ -20,6 +20,15 @@ export interface ProjectEntity {
     type: 'sideproject' | 'workproject';
 }
 
+export interface PostEntity {
+    id: number;
+    title: string;
+    author: string;
+    files: string;
+    created_at: string;
+    modified_at: string;
+}
+
 export interface FieldState {
     state: InputState;
     message: string;

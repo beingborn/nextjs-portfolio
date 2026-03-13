@@ -3,35 +3,74 @@
 import { CustomInput, PageTitle, SelectBox } from '@/components/ui';
 import { useState } from 'react';
 
-const viewOptions = [
+const pageSizeOpts = [
     { label: '10개씩 보기', value: 10 },
     { label: '20개씩 보기', value: 20 },
     { label: '30개씩 보기', value: 30 },
 ];
 
-export default function Board() {
-    const [opt, setOpt] = useState<string | null>(null);
+const searchCategoryOpts = [
+    { label: '제목', value: 'title' },
+    { label: '내용', value: 'content' },
+];
 
-    const handleOptChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setOpt(e.target.value);
-        console.log(opt);
+export default function Board() {
+    const [pageSize, setPageSize] = useState<number>(10);
+    const [searchCategory, setSearchCategory] = useState<string>('title');
+    const [searchInput, setSearchInput] = useState<string>('');
+
+    const handleSearchInput = (value: string) => {
+        setSearchInput(value);
+    };
+
+    const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setPageSize(Number(e.target.value));
+    };
+
+    const handleSearchCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSearchCategory(e.target.value);
+    };
+
+    const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const searchQuery = {
+            pageSize: pageSize,
+            searchCategory: searchCategory,
+            searchInput: searchInput,
+        };
+
+        const JsonSearchQuery = JSON.stringify(searchQuery);
+
+        alert(JsonSearchQuery);
     };
 
     return (
         <>
             <PageTitle title="게시판" />
 
-            <div className="flex items-center justify-between">
-                <SelectBox onChange={handleOptChange} options={viewOptions} />
-                <div className="flex items-center gap-2">
-                    <select name="" id="">
-                        <option value="">옵션4</option>
-                        <option value="">옵션5</option>
-                        <option value="">옵션6</option>
-                    </select>
-                    <CustomInput type="text" placeholder="제목을 입력해주세요" />
+            <form onSubmit={handleSearchSubmit}>
+                <div className="flex items-center justify-between">
+                    <SelectBox
+                        selectedValue={pageSize}
+                        onChange={handlePageSizeChange}
+                        options={pageSizeOpts}
+                    />
+                    <div className="flex items-center gap-2">
+                        <SelectBox
+                            selectedValue={searchCategory}
+                            onChange={handleSearchCategoryChange}
+                            options={searchCategoryOpts}
+                        />
+                        <CustomInput
+                            value={searchInput}
+                            onChange={(e) => handleSearchInput(e.target.value)}
+                            type="text"
+                            placeholder="제목을 입력해주세요"
+                        />
+                    </div>
                 </div>
-            </div>
+            </form>
             <div>
                 <table>
                     <caption>테이블 설명</caption>
