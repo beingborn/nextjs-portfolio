@@ -10,6 +10,7 @@ export { default as Popover } from './Popover/PopoverProvider.tsx';
 export { default as SelectBox } from './SelectBox.tsx';
 export { default as Spinner } from './Spinner.tsx';
 export { default as Tabs } from './Tab/TabProvider.tsx';
+export { default as Table } from './Table.tsx';
 
 // export {
 //     AccordionContent,

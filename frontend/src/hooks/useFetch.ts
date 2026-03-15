@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 /* T: 제네릭 타입 (사용 시 타입 정해짐) */
 export default function useFetch<T>(url: string) {
-    const [data, setData] = useState<T | []>([]);
+    const [data, setData] = useState<T | null>(null);
     const [loading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 

@@ -8,7 +8,29 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
+from collections import OrderedDict # 리스트 삽입 순서 보장
 
+class BasePagination(PageNumberPagination):
+    page_size = 10
+    max_page_size = 100
+    page_size_query_param = 'page_size'
+    allow_empty_first_page=False
+
+    def get_paginated_response(self, data):
+        return Response(OrderedDict([
+            ('number', self.page.number),
+            ('per_page', self.page.paginator.per_page),
+            ('count', self.page.paginator.count),
+            ('next', self.page.has_next()),
+            ('previous', self.page.has_previous()),
+            ('results', data)
+        ]))
+
+# page_size - 각 페이지네이션의 크기 결정
+# max_page_size - 최대 허용 요청 페이지 크기를 나타내는 숫자 값 , page_size_query_param 설정 되어야만 유효
+# page_size_query_param - 클라이언트가 요청별로 페이지 크기를 설정할 수 있도록 하는 쿼리 매개변수의 이름
+# page_size_query_param를 설정했을 때 max_page_size 값보다 큰 값을 넣어도 설정해둔 max_page_size값 만큼의 객체가 리턴된다.
 
 # ListCreateView (DRF 제공 제네릭 뷰)
 # 공통 동작을 이미 구현한 클래스 
@@ -53,8 +75,17 @@ class GuestbookList(APIView):
 
 # 게시판 목록
 class PostList(APIView):
+    pagination_class = BasePagination
+    
     def get(self, request, format=None):
         posts = Post.objects.all()
+
+        paginator = self.pagination_class()
+        page = paginator.paginate_queryset(posts, request, view=self)
+
+        if page is not None:
+            serializer = PostSerializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
         serializer = PostSerializer(posts, many = True)
         return Response(serializer.data)
     

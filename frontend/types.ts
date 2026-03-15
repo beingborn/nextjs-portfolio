@@ -20,11 +20,21 @@ export interface ProjectEntity {
     type: 'sideproject' | 'workproject';
 }
 
+// 페이지네이션 응답값
+export type PaginatedResponse<T> = {
+    number: number;
+    per_page: number;
+    count: number;
+    next: boolean;
+    previous: boolean;
+    results: T[];
+};
+
 export interface PostEntity {
     id: number;
     title: string;
     author: string;
-    files: string;
+    files: string | null;
     created_at: string;
     modified_at: string;
 }

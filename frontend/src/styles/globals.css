@@ -43,6 +43,9 @@
     /* Sidebar Bg */
     --color-sidebar-primary: #f5f5f5;
 
+    /* Table */
+    --color-tablehead-primary: #a6d7f5;
+
     /* Border */
     --color-border-primary-500: #ddd;
     --color-border-primary-300: #ededed;
@@ -93,6 +96,12 @@ ul.pagination li.active {
     color: #fff;
 }
 
+/*
+    Tailwind Custom Style 우선순위
+
+    Utilities > Components > Base
+ */
+
 @layer base {
     *:focus {
         outline: none;
@@ -101,6 +110,12 @@ ul.pagination li.active {
     *:focus-visible {
         outline: 0.2rem solid var(--color-primary-500);
         outline-offset: 0.2rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
     }
 }
 

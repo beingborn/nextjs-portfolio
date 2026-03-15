@@ -1,70 +1,68 @@
-/* 
-    1. Table 
-    
-*/
-
-import { useRouter } from 'next/navigation';
-
-const Header = ({ column, children }) => {
-    return (
-        <th className="h-10 border border-gray-300 border-collapse text-left px-2 bg-sky-100">
-            {column && column.label}
-            {children}
-        </th>
-    );
+/* 제네릭 타입 : 타입 Placeholder => 외부에서 타입 지정 */
+export type Column<T> = {
+    key: keyof T;
+    header: string;
+    width?: string | number;
+    align?: 'center' | 'left' | 'right';
+    render?: (row: T) => React.ReactNode;
+    order?: boolean;
 };
 
-const Cell = ({ children }) => {
-    return <td className="h-10 border border-gray-300 px-2 bg-white">{children}</td>;
+type TableProps<T> = {
+    data: T[];
+    columns: Column<T>[];
 };
 
-const Table = ({ columns, label, data }) => {
-    const router = useRouter();
-
+export default function Table<T extends object>({ columns, data }: TableProps<T>) {
     return (
-        <table className="w-full table-fixed">
-            <caption className="sr-only">{label}</caption>
-            <colgroup>
-                {columns.map((column) => (
-                    <col
-                        key={column.id}
-                        style={{
-                            width: column.width,
-                        }}
-                    />
-                ))}
-            </colgroup>
+        <table>
             <thead>
                 <tr>
                     {columns.map((column) => (
-                        <Table.Header key={column.id} column={column} />
+                        <th
+                            className="px-4 h-10 text-lg border border-border-primary-300 bg-tablehead-primary font-bold text-text-main"
+                            style={{
+                                width: column.width,
+                            }}
+                            key={String(column.key)}
+                        >
+                            {column.header}
+                        </th>
                     ))}
                 </tr>
             </thead>
             <tbody>
-                {data.map((row, index) => (
-                    <tr key={index}>
+                {/* 데이터 순회 */}
+                {data.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                        {/* 열의 render 속성이 있을 경우 render에  */}
                         {columns.map((column) => (
                             <td
-                                key={column.id}
-                                className={`h-10 border border-gray-300 px-2 bg-white ${column.isLink && ' cursor-pointer hover:underline'}`}
-                                onClick={() => {
-                                    if (column.isLink) {
-                                        router.push(`/pages/${column.href}/${row.id}`);
-                                    }
-                                }}
+                                className="px-4 text-md h-9 border border-border-primary-300"
+                                style={{ textAlign: column.align || 'center' }}
+                                key={String(column.key)}
                             >
-                                {row[column.id]}
+                                {column.order
+                                    ? rowIndex + 1
+                                    : column.render
+                                      ? column.render(row)
+                                      : String(row[column.key])}
                             </td>
                         ))}
                     </tr>
                 ))}
+
+                {data.length == 0 && (
+                    <tr>
+                        <td
+                            className="px-4 text-md h-9 border border-border-primary-300 text-center"
+                            colSpan={columns.length}
+                        >
+                            데이터가 없습니다.
+                        </td>
+                    </tr>
+                )}
             </tbody>
         </table>
     );
-};
-
-Table.Header = Header;
-
-export { Cell as TableCell, Header as TableHead };
-export default Table;
+}
