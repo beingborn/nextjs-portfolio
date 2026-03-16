@@ -1,11 +1,11 @@
 'use client';
 
-import { CustomInput, PageTitle, SelectBox, Table } from '@/components/ui';
+import { CustomInput, Loading, PageTitle, SelectBox, Table } from '@/components/ui';
 import { Column } from '@/components/ui/Table';
 import API from '@/constants/api';
 import useFetch from '@/hooks/useFetch';
-import { Paperclip } from 'lucide-react';
-import { useSearchParams } from 'next/navigation';
+import { ChevronLeft, ChevronRight, Paperclip } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { PaginatedResponse, PostEntity } from 'types';
 
@@ -21,15 +21,18 @@ const searchCategoryOpts = [
 ];
 
 export default function Board() {
+    const router = useRouter();
     const [pageSize, setPageSize] = useState<number>(10);
     const [searchCategory, setSearchCategory] = useState<string>('title');
     const [searchInput, setSearchInput] = useState<string>('');
     const searchParams = useSearchParams();
-    const page = searchParams.get('page');
+    const page = searchParams.get('page') || 1;
 
-    const { data: postData, error: postsError } = useFetch<PaginatedResponse<PostEntity>>(
-        API.BOARD + `?page=${page}&page_size=${pageSize}`,
-    );
+    const {
+        data: postData,
+        error: postsError,
+        loading,
+    } = useFetch<PaginatedResponse<PostEntity>>(API.BOARD + `?page=${page}&page_size=${pageSize}`);
 
     const handleSearchInput = (value: string) => {
         setSearchInput(value);
@@ -37,6 +40,8 @@ export default function Board() {
 
     const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setPageSize(Number(e.target.value));
+
+        router.push(`/board?page=${page}&page_size=${pageSize}`);
     };
 
     const handleSearchCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -117,9 +122,38 @@ export default function Board() {
                 </div>
             </form>
             <div className="mt-8">
-                {postsError && <div>데이터를 불러올 수 없습니다</div>}
-                <Table data={postData?.results ?? []} columns={columns} />
+                {/* {postsError && <p>데이터를 불러오는데 문제가 발생했습니다</p>} */}
+                {loading ? <Loading /> : <Table data={postData?.results ?? []} columns={columns} />}
                 {/* TODO : 페이지네이션 렌더링 및 실제 이동 */}
+                <div className="flex justify-center mt-5">
+                    <div className="flex items-center gap-2">
+                        {postData?.previous && (
+                            <a href={`../board?page=${postData?.number - 1}`}>
+                                <ChevronLeft size={28} />
+                                <span className="sr-only">이전으로</span>
+                            </a>
+                        )}
+
+                        <ul className="flex items-center gap-2">
+                            {Array.from({ length: Number(postData?.num_pages) }, (_, i) => (
+                                <li key={i + 1}>
+                                    <a
+                                        className={`inline-flex items-center justify-center w-8 h-8 rounded-md ${postData?.number == i + 1 && 'bg-secondary-500 text-white'}`}
+                                        href={`../board?page=${i + 1}`}
+                                    >
+                                        {i + 1}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                        {postData?.next && (
+                            <a href={`../board?page=${postData?.number + 1}`}>
+                                <ChevronRight size={28} />
+                                <span className="sr-only">다음으로</span>
+                            </a>
+                        )}
+                    </div>
+                </div>
             </div>
         </>
     );

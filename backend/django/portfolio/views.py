@@ -24,6 +24,7 @@ class BasePagination(PageNumberPagination):
             ('count', self.page.paginator.count),
             ('next', self.page.has_next()),
             ('previous', self.page.has_previous()),
+            ('num_pages', self.page.paginator.num_pages),
             ('results', data)
         ]))
 
@@ -87,6 +88,7 @@ class PostList(APIView):
             serializer = PostSerializer(page, many=True)
             return paginator.get_paginated_response(serializer.data)
         serializer = PostSerializer(posts, many = True)
+        
         return Response(serializer.data)
     
     def post(self, request, format=None):

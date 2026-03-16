@@ -22,6 +22,7 @@ export interface ProjectEntity {
 
 // 페이지네이션 응답값
 export type PaginatedResponse<T> = {
+    num_pages: number;
     number: number;
     per_page: number;
     count: number;
