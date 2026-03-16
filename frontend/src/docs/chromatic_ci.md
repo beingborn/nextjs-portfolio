@@ -17,12 +17,14 @@ GitHub Actions의 기본 작업 디렉토리는 저장소 루트입니다.
 
 예시 구조:
 
+```
 root/
 ├── backend/
 └── frontend/
 ├── package.json
 ├── package-lock.json
 └── .storybook/
+```
 
 이 경우:
 
