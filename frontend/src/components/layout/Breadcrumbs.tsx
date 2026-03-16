@@ -22,7 +22,15 @@ export default function Breadcrumbs() {
         url += segment;
 
         const isLast = i === segments.length - 1;
-        const label = segment === '' ? '홈' : (URLMAP[segment] ?? segment);
+
+        /* 
+            segment 공백 > 홈 
+            URL맵에서 조회 안될 시 isNAN인지 확인 : segment : 상세
+        */
+        const label =
+            segment === ''
+                ? '홈'
+                : (URLMAP[segment] ?? (Number.isNaN(Number(segment)) ? segment : '상세'));
 
         const content = (
             <>

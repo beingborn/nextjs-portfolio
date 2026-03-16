@@ -38,6 +38,7 @@ export interface PostEntity {
     files: string | null;
     created_at: string;
     modified_at: string;
+    content: string;
 }
 
 export interface FieldState {

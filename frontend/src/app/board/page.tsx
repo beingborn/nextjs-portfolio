@@ -96,9 +96,12 @@ export default function Board() {
         },
     ];
 
+    if (postsError) console.log('데이터 페칭 오류');
+
     return (
         <>
             <PageTitle title="게시판" />
+            {/* TODO :: 검색 기능 구현 */}
             <form onSubmit={handleSearchSubmit}>
                 <div className="flex items-center justify-between">
                     <SelectBox
@@ -124,11 +127,10 @@ export default function Board() {
             <div className="mt-8">
                 {/* {postsError && <p>데이터를 불러오는데 문제가 발생했습니다</p>} */}
                 {loading ? <Loading /> : <Table data={postData?.results ?? []} columns={columns} />}
-                {/* TODO : 페이지네이션 렌더링 및 실제 이동 */}
                 <div className="flex justify-center mt-5">
                     <div className="flex items-center gap-2">
                         {postData?.previous && (
-                            <a href={`../board?page=${postData?.number - 1}`}>
+                            <a href={`/board?page=${postData?.number - 1}`}>
                                 <ChevronLeft size={28} />
                                 <span className="sr-only">이전으로</span>
                             </a>
@@ -147,7 +149,7 @@ export default function Board() {
                             ))}
                         </ul>
                         {postData?.next && (
-                            <a href={`../board?page=${postData?.number + 1}`}>
+                            <a href={`/board?page=${postData?.number + 1}`}>
                                 <ChevronRight size={28} />
                                 <span className="sr-only">다음으로</span>
                             </a>
