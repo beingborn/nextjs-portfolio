@@ -48,8 +48,8 @@ export default function Project() {
     if (projectListError) return <h1>에러가 발생했습니다</h1>;
     if (loading) return <Loading />;
 
-    const companyProjectList = projectList.filter((project) => project.type === 'workproject');
-    const personalProjectList = projectList.filter((project) => project.type === 'sideproject');
+    const companyProjectList = projectList?.filter((project) => project.type === 'workproject');
+    const personalProjectList = projectList?.filter((project) => project.type === 'sideproject');
 
     const showModal = (project: ProjectEntity) => {
         setSelectedProject(project);
@@ -69,13 +69,13 @@ export default function Project() {
                     <Tabs.Button value="personal">개인 프로젝트</Tabs.Button>
                 </div>
                 <Tabs.Panel value="all">
-                    <ProjectList onOpenModal={showModal} projectList={projectList} />
+                    <ProjectList onOpenModal={showModal} projectList={projectList || []} />
                 </Tabs.Panel>
                 <Tabs.Panel value="company">
-                    <ProjectList onOpenModal={showModal} projectList={companyProjectList} />
+                    <ProjectList onOpenModal={showModal} projectList={companyProjectList || []} />
                 </Tabs.Panel>
                 <Tabs.Panel value="personal">
-                    <ProjectList onOpenModal={showModal} projectList={personalProjectList} />
+                    <ProjectList onOpenModal={showModal} projectList={personalProjectList || []} />
                 </Tabs.Panel>
             </Tabs>
             {selectedProject && (

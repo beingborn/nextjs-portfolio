@@ -26,10 +26,11 @@ class ProjectSerializer(serializers.ModelSerializer):
         return None
     
 class PostSerializer(serializers.ModelSerializer):
+    filename = serializers.ReadOnlyField()
     class Meta:
         model = Post
         fields = '__all__'
-        
+                
 class GuestbookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Guestbook

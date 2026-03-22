@@ -40,6 +40,8 @@ export default function PostsDetail() {
         return <div>로딩 중..</div>;
     }
 
+    console.log(data);
+
     return (
         <table>
             <caption>Post 상세페이지</caption>

@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 class Project(models.Model):
     id = models.AutoField(unique=True, primary_key=True, auto_created=True)
@@ -28,7 +29,11 @@ class Post(models.Model):
     files = models.FileField()   
     created_at = models.DateField()
     modified_at = models.DateField()
-    
+
+    @property
+    def filename(self):
+        return os.path.basename(self.files.name)
+        
     def __str__(self):
         return self.title
     

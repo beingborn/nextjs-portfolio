@@ -19,8 +19,6 @@ export default function BoardDetail() {
     if (loading) return <Loading />;
     if (postDetailError) return <div>오류가 발생했습니다</div>;
 
-    // console.log(postDetailData);
-
     return (
         <div className="flex flex-col gap-2">
             <div className="flex items-center h-10 border-b border-b-border-primary-500">
@@ -37,7 +35,7 @@ export default function BoardDetail() {
 
                 <div className="flex items-center h-10">
                     <div>첨부파일 : </div>
-                    <p>{postDetailData?.files}</p>
+                    <p>{postDetailData?.filename}</p>
                     <Button>다운로드</Button>
                 </div>
             </div>

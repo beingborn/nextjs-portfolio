@@ -36,6 +36,7 @@ export interface PostEntity {
     title: string;
     author: string;
     files: string | null;
+    filename: string;
     created_at: string;
     modified_at: string;
     content: string;
