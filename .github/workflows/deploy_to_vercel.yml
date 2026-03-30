@@ -1,6 +1,8 @@
 name: 'Deploy To Vercel'
 
-on: push
+on: 
+    push:
+        branches: [master]
 
 jobs:
   test:
@@ -23,6 +25,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+    
+      - name: Install Vercel CLI
+        run: npm install -g vercel
 
       - name: Deploy to vercel Action
         uses: BetaHuhn/deploy-to-vercel-action@latest
