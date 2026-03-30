@@ -52,7 +52,7 @@ export default function GuestBook() {
 
     const POSTITCOLORS = ['#d1e8f2', '#fdcc84', '#feebda', '#fee6e6', '#e7f1f2'];
 
-    const hasReachedGuestbookLimit = guestbookList.length > 40;
+    const hasReachedGuestbookLimit = guestbookList ? guestbookList.length > 40 : false;
 
     const [form, setForm] = useState({
         title: '',
@@ -165,7 +165,7 @@ export default function GuestBook() {
                     form={form}
                     disabled={hasReachedGuestbookLimit}
                 />
-                <GuestbookList guestbooklist={guestbookList} />
+                {guestbookList && <GuestbookList guestbooklist={guestbookList} />}
             </section>
         </>
     );
